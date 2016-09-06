@@ -13,9 +13,12 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout" rowstretch="3,3,1" rowminimumheight="3,3,1">
+  <layout class="QGridLayout" name="gridLayout" rowstretch="2,1,5,3" rowminimumheight="2,1,5,3">
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <item row="0" column="0">
-    <widget class="QWidget" name="widget_3" native="true">
+    <widget class="LayerTopMenu" name="widget_3" native="true">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -30,11 +33,107 @@
      </property>
     </widget>
    </item>
+   <item row="3" column="0">
+    <widget class="LayerBarDiagram" name="layerBar" native="true"/>
+   </item>
    <item row="2" column="0">
-    <widget class="LayerBarDiagram" name="widget_2" native="true"/>
+    <widget class="LayerStock" name="layerStock" native="true"/>
    </item>
    <item row="1" column="0">
-    <widget class="LayerStock" name="widget" native="true"/>
+    <widget class="QWidget" name="widget_4" native="true">
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>代號:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbId">
+        <property name="text">
+         <string>123</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>開 :</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbOpen">
+        <property name="text">
+         <string>5</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>低 :</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbMin">
+        <property name="text">
+         <string>8</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>高 :</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbMax">
+        <property name="text">
+         <string>12</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>收 :</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbClose">
+        <property name="text">
+         <string>10</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -49,6 +148,12 @@
    <class>LayerBarDiagram</class>
    <extends>QWidget</extends>
    <header>LayerBarDiagram.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LayerTopMenu</class>
+   <extends>QWidget</extends>
+   <header>LayerTopMenu.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

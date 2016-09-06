@@ -29,7 +29,7 @@ public:
     explicit LayerStock(QWidget *parent = 0);
     ~LayerStock();
 
-    ModelStock *m_cModel;
+    ModelStock m_cModel;
 
     //K line
     StockDiagram m_diagram;

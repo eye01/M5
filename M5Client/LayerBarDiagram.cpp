@@ -7,9 +7,9 @@ LayerBarDiagram::LayerBarDiagram(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    m_cModel=&Dataprovider.m_modelBarDiagram;
+
     initUi();
-    m_diagram->setModel( m_cModel);
+
 }
 
 LayerBarDiagram::~LayerBarDiagram()
@@ -53,5 +53,5 @@ void LayerBarDiagram::initUi()
 
     this->coordinatePlane()->replaceDiagram( m_diagram );
     //this->setGlobalLeading( 20, 20, 20, 20 );
-
+     m_diagram->setModel( &m_cModel);
 }

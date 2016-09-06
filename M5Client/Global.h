@@ -4,14 +4,17 @@
 #include <QObject>
 #include <QDebug>
 
-#include "DataProvider.h"
-#include "ListenTick.h"
-#include "TestTick.h"
+#include "CStreamData.h"
+
 
 //外部要呼叫統一使用define的，design patten : singleton 
 #define GLOBAL Global::Instance
 
 #define Dataprovider Global::Instance().m_data
+
+#define StreamData
+
+
 
 class Global : public QObject
 {
@@ -25,19 +28,14 @@ public:
         return *m_pInstance;
     }
 
-    void startMq(MQ_TYPE type,QStringList argv,int iMsec=500);
 
-    void stopMq();
 
-    DataProvider m_data;
-
+    CStreamData m_data;
 private:
     Global();
     static Global* m_pInstance;
 
-    TestTick *m_listen;
-signals:
-    void signalTick(QString);
+
 };
 
 #endif // GLOBAL_H

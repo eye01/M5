@@ -7,11 +7,17 @@ Widget::Widget(QWidget *parent) :
 {
     ui->setupUi(this);
     GLOBAL();
-    GLOBAL().startMq(_stock,QStringList()<<"");
+   // GLOBAL().startMq(_stock,QStringList()<<"tse.*"<<"otc.*"<<"emg.*");
     
 }
 
 Widget::~Widget()
 {
     delete ui;
+}
+
+void Widget::on_btn_clicked()
+{
+    StageChart* m=new StageChart();
+    m->show();
 }

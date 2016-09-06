@@ -2,14 +2,52 @@
 
 DataProvider::DataProvider(QObject *parent) : QObject(parent)
 {
-    QVector<QVariant> list;
-    list.append(double(10));
-    list.append(double(14));
-    list.append(double(12));
-    list.append(double(11));
 
-    m_modelStock.appendData("AA",list);
+    m_listen=NULL;
+
+
+
+//    QVector<QVariant> list;
+//    list.append(double(10));
+//    list.append(double(14));
+//    list.append(double(12));
+//    list.append(double(11));
+
+//    m_modelStock->appendData("AA",list);
     //QObject::startTimer(1000);
+
+    //m_listKtimer.append(1000);
+}
+
+void DataProvider::startMq(MQ_TYPE type, QStringList argv, int iMsec)
+{
+
+    if(m_listen==NULL)
+    {
+#if TEST_TICK
+        m_listen=new TestTick(this);
+#else
+        m_listen=new ListenTick(this);
+#endif
+        m_listen->connect(m_listen,SIGNAL(signalTick(QString)),this,SLOT(slotTick(QString)));
+
+    }
+
+    m_listen->setBindingKey(type,argv,iMsec);
+    m_listen->start();
+}
+
+void DataProvider::stopMq()
+{
+    if(m_listen==NULL)
+        return;
+    m_listen->close();
+    m_listen->disconnect();
+    m_listen->quit();
+    m_listen->wait(1000);
+    m_listen->deleteLater();
+    m_listen=NULL;
+
 }
 
 void DataProvider::timerEvent(QTimerEvent *)
@@ -34,7 +72,7 @@ void DataProvider::timerEvent(QTimerEvent *)
     list.append(double(12));
     list.append(double(11));
 
-    m_modelStock.appendData("AA",list);
+    m_modelStock->appendData("AA",list);
 
 
     QVector<QVariant> list2;
@@ -42,14 +80,14 @@ void DataProvider::timerEvent(QTimerEvent *)
     list2.append(double(0));
     list2.append(double(0));
     list2.append(double(0));
-    m_modelBarDiagram.appendData("AA",list2);
+    m_modelBarDiagram->appendData("AA",list2);
 
 }
 
 void DataProvider::slotTick(QString sTick)
 {
-
     QStringList listTick=sTick.split(" ");
+
     if(listTick.length()>=5 && listTick.at(2)!="0" &&listTick.at(3)!="0" &&listTick.at(4)!="0")
     {
         double iCost=QString(listTick.at(3)).toDouble();
@@ -61,13 +99,13 @@ void DataProvider::slotTick(QString sTick)
         list.append(iCost);
         list.append(iCost);
         list.append(iCost);
-        m_modelStock.appendData(QString(listTick.at(1)),list);
+        m_modelStock->appendData(QString(listTick.at(1)),list);
         QVector<QVariant> list2;
         list2.append(double(0));
-           list2.append(double(0));
+        list2.append(double(0));
         list2.append(sNums.toDouble());
         list2.append(double(0));
-        m_modelBarDiagram.appendData(sNums,list2);
+        m_modelBarDiagram->appendData(sNums,list2);
     }
 }
 

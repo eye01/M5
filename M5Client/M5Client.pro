@@ -54,7 +54,8 @@ SOURCES += main.cpp\
     Global.cpp \
     DataProvider.cpp \
     ModelBarDiagram.cpp \
-    LayerTopMenu.cpp
+    LayerTopMenu.cpp \
+    CStreamData.cpp
 
 HEADERS  += widget.h \
     LayerStock.h \
@@ -67,7 +68,9 @@ HEADERS  += widget.h \
     Global.h \
     DataProvider.h \
     ModelBarDiagram.h \
-    LayerTopMenu.h
+    LayerTopMenu.h \
+    CStreamData.h \
+    CDefine.h
 
 FORMS    += widget.ui \
     LayerStock.ui \

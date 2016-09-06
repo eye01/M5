@@ -61,7 +61,8 @@ SOURCES       = ../rabbitMq/ListenTick.cpp \
 		Global.cpp \
 		DataProvider.cpp \
 		ModelBarDiagram.cpp \
-		LayerTopMenu.cpp qrc_res.cpp \
+		LayerTopMenu.cpp \
+		CStreamData.cpp qrc_res.cpp \
 		obj/moc_M5Library.cpp \
 		obj/moc_Network.cpp \
 		obj/moc_DataBase.cpp \
@@ -77,7 +78,8 @@ SOURCES       = ../rabbitMq/ListenTick.cpp \
 		obj/moc_Global.cpp \
 		obj/moc_DataProvider.cpp \
 		obj/moc_ModelBarDiagram.cpp \
-		obj/moc_LayerTopMenu.cpp
+		obj/moc_LayerTopMenu.cpp \
+		obj/moc_CStreamData.cpp
 OBJECTS       = obj/ListenTick.o \
 		obj/TestTick.o \
 		obj/main.o \
@@ -92,6 +94,7 @@ OBJECTS       = obj/ListenTick.o \
 		obj/DataProvider.o \
 		obj/ModelBarDiagram.o \
 		obj/LayerTopMenu.o \
+		obj/CStreamData.o \
 		obj/qrc_res.o \
 		obj/moc_M5Library.o \
 		obj/moc_Network.o \
@@ -108,7 +111,8 @@ OBJECTS       = obj/ListenTick.o \
 		obj/moc_Global.o \
 		obj/moc_DataProvider.o \
 		obj/moc_ModelBarDiagram.o \
-		obj/moc_LayerTopMenu.o
+		obj/moc_LayerTopMenu.o \
+		obj/moc_CStreamData.o
 DIST          = ../../../Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt5.7.0/5.7/gcc_64/mkspecs/common/unix.conf \
 		../../../Qt5.7.0/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -277,7 +281,9 @@ DIST          = ../../../Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		Global.h \
 		DataProvider.h \
 		ModelBarDiagram.h \
-		LayerTopMenu.h ../rabbitMq/ListenTick.cpp \
+		LayerTopMenu.h \
+		CStreamData.h \
+		CDefine.h ../rabbitMq/ListenTick.cpp \
 		../rabbitMq/TestTick.cpp \
 		main.cpp \
 		widget.cpp \
@@ -290,7 +296,8 @@ DIST          = ../../../Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		Global.cpp \
 		DataProvider.cpp \
 		ModelBarDiagram.cpp \
-		LayerTopMenu.cpp
+		LayerTopMenu.cpp \
+		CStreamData.cpp
 QMAKE_TARGET  = M5ClientLinux
 DESTDIR       = ../bin/
 TARGET        = ../bin/M5ClientLinux
@@ -637,8 +644,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents res.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../M5Lib/include/M5Library.h ../M5Lib/include/Network.h ../M5Lib/include/DataBase.h ../rabbitMq/include/ListenTick.h ../rabbitMq/utils.h ../rabbitMq/include/TestTick.h widget.h LayerStock.h tools_export.h TableModel.h ModelStock.h StageChart.h LayerBarDiagram.h LayerChartBase.h Global.h DataProvider.h ModelBarDiagram.h LayerTopMenu.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../rabbitMq/ListenTick.cpp ../rabbitMq/TestTick.cpp main.cpp widget.cpp LayerStock.cpp TableModel.cpp ModelStock.cpp StageChart.cpp LayerBarDiagram.cpp LayerChartBase.cpp Global.cpp DataProvider.cpp ModelBarDiagram.cpp LayerTopMenu.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../M5Lib/include/M5Library.h ../M5Lib/include/Network.h ../M5Lib/include/DataBase.h ../rabbitMq/include/ListenTick.h ../rabbitMq/utils.h ../rabbitMq/include/TestTick.h widget.h LayerStock.h tools_export.h TableModel.h ModelStock.h StageChart.h LayerBarDiagram.h LayerChartBase.h Global.h DataProvider.h ModelBarDiagram.h LayerTopMenu.h CStreamData.h CDefine.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../rabbitMq/ListenTick.cpp ../rabbitMq/TestTick.cpp main.cpp widget.cpp LayerStock.cpp TableModel.cpp ModelStock.cpp StageChart.cpp LayerBarDiagram.cpp LayerChartBase.cpp Global.cpp DataProvider.cpp ModelBarDiagram.cpp LayerTopMenu.cpp CStreamData.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents widget.ui LayerStock.ui StageChart.ui LayerBarDiagram.ui LayerTopMenu.ui $(DISTDIR)/
 
 
@@ -670,9 +677,9 @@ qrc_res.cpp: res.qrc \
 		OHLC.csv
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/rcc -name res res.qrc -o qrc_res.cpp
 
-compiler_moc_header_make_all: obj/moc_M5Library.cpp obj/moc_Network.cpp obj/moc_DataBase.cpp obj/moc_ListenTick.cpp obj/moc_TestTick.cpp obj/moc_widget.cpp obj/moc_LayerStock.cpp obj/moc_TableModel.cpp obj/moc_ModelStock.cpp obj/moc_StageChart.cpp obj/moc_LayerBarDiagram.cpp obj/moc_LayerChartBase.cpp obj/moc_Global.cpp obj/moc_DataProvider.cpp obj/moc_ModelBarDiagram.cpp obj/moc_LayerTopMenu.cpp
+compiler_moc_header_make_all: obj/moc_M5Library.cpp obj/moc_Network.cpp obj/moc_DataBase.cpp obj/moc_ListenTick.cpp obj/moc_TestTick.cpp obj/moc_widget.cpp obj/moc_LayerStock.cpp obj/moc_TableModel.cpp obj/moc_ModelStock.cpp obj/moc_StageChart.cpp obj/moc_LayerBarDiagram.cpp obj/moc_LayerChartBase.cpp obj/moc_Global.cpp obj/moc_DataProvider.cpp obj/moc_ModelBarDiagram.cpp obj/moc_LayerTopMenu.cpp obj/moc_CStreamData.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) obj/moc_M5Library.cpp obj/moc_Network.cpp obj/moc_DataBase.cpp obj/moc_ListenTick.cpp obj/moc_TestTick.cpp obj/moc_widget.cpp obj/moc_LayerStock.cpp obj/moc_TableModel.cpp obj/moc_ModelStock.cpp obj/moc_StageChart.cpp obj/moc_LayerBarDiagram.cpp obj/moc_LayerChartBase.cpp obj/moc_Global.cpp obj/moc_DataProvider.cpp obj/moc_ModelBarDiagram.cpp obj/moc_LayerTopMenu.cpp
+	-$(DEL_FILE) obj/moc_M5Library.cpp obj/moc_Network.cpp obj/moc_DataBase.cpp obj/moc_ListenTick.cpp obj/moc_TestTick.cpp obj/moc_widget.cpp obj/moc_LayerStock.cpp obj/moc_TableModel.cpp obj/moc_ModelStock.cpp obj/moc_StageChart.cpp obj/moc_LayerBarDiagram.cpp obj/moc_LayerChartBase.cpp obj/moc_Global.cpp obj/moc_DataProvider.cpp obj/moc_ModelBarDiagram.cpp obj/moc_LayerTopMenu.cpp obj/moc_CStreamData.cpp
 obj/moc_M5Library.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
@@ -977,7 +984,6 @@ obj/moc_TestTick.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
 		../rabbitMq/include/ListenTick.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
@@ -1102,24 +1108,7 @@ obj/moc_widget.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		Global.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CStreamData.h \
 		widget.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include widget.h -o obj/moc_widget.cpp
@@ -1291,21 +1280,7 @@ obj/moc_LayerStock.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAxis.h \
 		../KDChart-2.6.0/include/KDChart/KDChartRulerAttributes.h \
 		Global.h \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CStreamData.h \
 		../KDChart-2.6.0/include/KDChart/KDChartLegend \
 		../KDChart-2.6.0/include/KDChart/KDChartLegend.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAreaWidget.h \
@@ -1334,6 +1309,12 @@ obj/moc_LayerStock.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		../KDChart-2.6.0/include/KDChart/KDChartLineDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartLineAttributes.h \
 		../KDChart-2.6.0/include/KDChart/KDChartValueTrackerAttributes.h \
+		ModelStock.h \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
+		tools_export.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
 		LayerStock.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include LayerStock.h -o obj/moc_LayerStock.cpp
@@ -1579,6 +1560,27 @@ obj/moc_StageChart.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		DataProvider.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
+		ModelStock.h \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		tools_export.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
+		ModelBarDiagram.h \
+		../rabbitMq/include/ListenTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
+		../rabbitMq/include/TestTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CDefine.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
 		StageChart.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include StageChart.h -o obj/moc_StageChart.cpp
@@ -1680,6 +1682,15 @@ obj/moc_LayerBarDiagram.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidg
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		ModelBarDiagram.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		tools_export.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
 		LayerChartBase.h \
 		../KDChart-2.6.0/include/KDChart/KDChartChart \
 		../KDChart-2.6.0/include/KDChart/KDChartChart.h \
@@ -1687,11 +1698,9 @@ obj/moc_LayerBarDiagram.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidg
 		../KDChart-2.6.0/include/KDChart/KDChartGlobal.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtAlgorithms \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPointF \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/Qt \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractCoordinatePlane \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractCoordinatePlane.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractArea.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAreaBase.h \
@@ -1723,7 +1732,6 @@ obj/moc_LayerBarDiagram.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidg
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
@@ -1742,7 +1750,6 @@ obj/moc_LayerBarDiagram.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidg
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractProxyModel \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractproxymodel.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMap \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
 		../KDChart-2.6.0/include/KDChart/KDChartBackgroundAttributes \
 		../KDChart-2.6.0/include/KDChart/KDChartBackgroundAttributes.h \
 		../KDChart-2.6.0/include/KDChart/KDChartCartesianAxis \
@@ -1750,21 +1757,7 @@ obj/moc_LayerBarDiagram.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidg
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAxis.h \
 		../KDChart-2.6.0/include/KDChart/KDChartRulerAttributes.h \
 		Global.h \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CStreamData.h \
 		../KDChart-2.6.0/include/KDChart/KDChartBarDiagram \
 		../KDChart-2.6.0/include/KDChart/KDChartBarDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractCartesianDiagram.h \
@@ -1940,21 +1933,7 @@ obj/moc_LayerChartBase.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidge
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAxis.h \
 		../KDChart-2.6.0/include/KDChart/KDChartRulerAttributes.h \
 		Global.h \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CStreamData.h \
 		LayerChartBase.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include LayerChartBase.h -o obj/moc_LayerChartBase.cpp
@@ -2022,26 +2001,7 @@ obj/moc_Global.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		CStreamData.h \
 		Global.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Global.h -o obj/moc_Global.cpp
@@ -2094,16 +2054,14 @@ obj/moc_DataProvider.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
@@ -2111,12 +2069,25 @@ obj/moc_DataProvider.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		ModelStock.h \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
 		tools_export.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
 		ModelBarDiagram.h \
+		../rabbitMq/include/ListenTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
+		../rabbitMq/include/TestTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		CDefine.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
 		DataProvider.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
@@ -2296,6 +2267,58 @@ obj/moc_LayerTopMenu.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget 
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include LayerTopMenu.h -o obj/moc_LayerTopMenu.cpp
 
+obj/moc_CStreamData.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		CStreamData.h \
+		../../../Qt5.7.0/5.7/gcc_64/bin/moc
+	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CStreamData.h -o obj/moc_CStreamData.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_uic_make_all: obj/ui_header/ui_widget.h obj/ui_header/ui_LayerStock.h obj/ui_header/ui_StageChart.h obj/ui_header/ui_LayerBarDiagram.h obj/ui_header/ui_LayerTopMenu.h
@@ -2400,7 +2423,28 @@ obj/ui_header/ui_widget.h: widget.ui \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		DataProvider.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
+		ModelStock.h \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		tools_export.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
+		ModelBarDiagram.h \
+		../rabbitMq/include/ListenTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
+		../rabbitMq/include/TestTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CDefine.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/uic widget.ui -o obj/ui_header/ui_widget.h
 
 obj/ui_header/ui_LayerStock.h: LayerStock.ui \
@@ -2411,6 +2455,7 @@ obj/ui_header/ui_StageChart.h: StageChart.ui \
 		../../../Qt5.7.0/5.7/gcc_64/bin/uic \
 		LayerStock.h \
 		LayerBarDiagram.h \
+		LayerTopMenu.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
@@ -2578,21 +2623,7 @@ obj/ui_header/ui_StageChart.h: StageChart.ui \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAxis.h \
 		../KDChart-2.6.0/include/KDChart/KDChartRulerAttributes.h \
 		Global.h \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CStreamData.h \
 		../KDChart-2.6.0/include/KDChart/KDChartLegend \
 		../KDChart-2.6.0/include/KDChart/KDChartLegend.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAreaWidget.h \
@@ -2621,6 +2652,12 @@ obj/ui_header/ui_StageChart.h: StageChart.ui \
 		../KDChart-2.6.0/include/KDChart/KDChartLineDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartLineAttributes.h \
 		../KDChart-2.6.0/include/KDChart/KDChartValueTrackerAttributes.h \
+		ModelStock.h \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
+		tools_export.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
@@ -2718,6 +2755,15 @@ obj/ui_header/ui_StageChart.h: StageChart.ui \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		ModelBarDiagram.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		tools_export.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
 		LayerChartBase.h \
 		../KDChart-2.6.0/include/KDChart/KDChartChart \
 		../KDChart-2.6.0/include/KDChart/KDChartChart.h \
@@ -2725,11 +2771,9 @@ obj/ui_header/ui_StageChart.h: StageChart.ui \
 		../KDChart-2.6.0/include/KDChart/KDChartGlobal.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtAlgorithms \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPointF \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/Qt \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractCoordinatePlane \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractCoordinatePlane.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractArea.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAreaBase.h \
@@ -2761,7 +2805,6 @@ obj/ui_header/ui_StageChart.h: StageChart.ui \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
@@ -2780,7 +2823,6 @@ obj/ui_header/ui_StageChart.h: StageChart.ui \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractProxyModel \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractproxymodel.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMap \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
 		../KDChart-2.6.0/include/KDChart/KDChartBackgroundAttributes \
 		../KDChart-2.6.0/include/KDChart/KDChartBackgroundAttributes.h \
 		../KDChart-2.6.0/include/KDChart/KDChartCartesianAxis \
@@ -2788,26 +2830,109 @@ obj/ui_header/ui_StageChart.h: StageChart.ui \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAxis.h \
 		../KDChart-2.6.0/include/KDChart/KDChartRulerAttributes.h \
 		Global.h \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CStreamData.h \
 		../KDChart-2.6.0/include/KDChart/KDChartBarDiagram \
 		../KDChart-2.6.0/include/KDChart/KDChartBarDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractCartesianDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartCartesianCoordinatePlane.h \
-		../KDChart-2.6.0/include/KDChart/KDChartBarAttributes.h
+		../KDChart-2.6.0/include/KDChart/KDChartBarAttributes.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmargins.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qrect.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsize.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpalette.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qcolor.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qrgb.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qrgba64.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qbrush.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qmatrix.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpolygon.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qregion.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatastream.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qline.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtransform.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qimage.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpixmap.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qfont.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qcursor.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qevent.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qset.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qurl.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qurlquery.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/uic StageChart.ui -o obj/ui_header/ui_StageChart.h
 
 obj/ui_header/ui_LayerBarDiagram.h: LayerBarDiagram.ui \
@@ -2954,7 +3079,6 @@ obj/TestTick.o: ../rabbitMq/TestTick.cpp ../rabbitMq/include/TestTick.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
 		../rabbitMq/include/ListenTick.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
@@ -3078,24 +3202,7 @@ obj/main.o: main.cpp widget.h \
 		Global.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CStreamData.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
@@ -3206,24 +3313,7 @@ obj/widget.o: widget.cpp widget.h \
 		Global.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CStreamData.h \
 		obj/ui_header/ui_widget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/widget.o widget.cpp
 
@@ -3395,21 +3485,7 @@ obj/LayerStock.o: LayerStock.cpp LayerStock.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAxis.h \
 		../KDChart-2.6.0/include/KDChart/KDChartRulerAttributes.h \
 		Global.h \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CStreamData.h \
 		../KDChart-2.6.0/include/KDChart/KDChartLegend \
 		../KDChart-2.6.0/include/KDChart/KDChartLegend.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAreaWidget.h \
@@ -3438,6 +3514,12 @@ obj/LayerStock.o: LayerStock.cpp LayerStock.h \
 		../KDChart-2.6.0/include/KDChart/KDChartLineDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartLineAttributes.h \
 		../KDChart-2.6.0/include/KDChart/KDChartValueTrackerAttributes.h \
+		ModelStock.h \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
+		tools_export.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
 		obj/ui_header/ui_LayerStock.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/LayerStock.o LayerStock.cpp
 
@@ -3689,6 +3771,27 @@ obj/StageChart.o: StageChart.cpp StageChart.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		DataProvider.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
+		ModelStock.h \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		tools_export.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
+		ModelBarDiagram.h \
+		../rabbitMq/include/ListenTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
+		../rabbitMq/include/TestTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CDefine.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
 		obj/ui_header/ui_StageChart.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/StageChart.o StageChart.cpp
 
@@ -3790,6 +3893,15 @@ obj/LayerBarDiagram.o: LayerBarDiagram.cpp LayerBarDiagram.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		ModelBarDiagram.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		tools_export.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
 		LayerChartBase.h \
 		../KDChart-2.6.0/include/KDChart/KDChartChart \
 		../KDChart-2.6.0/include/KDChart/KDChartChart.h \
@@ -3797,11 +3909,9 @@ obj/LayerBarDiagram.o: LayerBarDiagram.cpp LayerBarDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartGlobal.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtAlgorithms \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPointF \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/Qt \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractCoordinatePlane \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractCoordinatePlane.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractArea.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAreaBase.h \
@@ -3833,7 +3943,6 @@ obj/LayerBarDiagram.o: LayerBarDiagram.cpp LayerBarDiagram.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
@@ -3852,7 +3961,6 @@ obj/LayerBarDiagram.o: LayerBarDiagram.cpp LayerBarDiagram.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractProxyModel \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractproxymodel.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMap \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
 		../KDChart-2.6.0/include/KDChart/KDChartBackgroundAttributes \
 		../KDChart-2.6.0/include/KDChart/KDChartBackgroundAttributes.h \
 		../KDChart-2.6.0/include/KDChart/KDChartCartesianAxis \
@@ -3860,21 +3968,7 @@ obj/LayerBarDiagram.o: LayerBarDiagram.cpp LayerBarDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAxis.h \
 		../KDChart-2.6.0/include/KDChart/KDChartRulerAttributes.h \
 		Global.h \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CStreamData.h \
 		../KDChart-2.6.0/include/KDChart/KDChartBarDiagram \
 		../KDChart-2.6.0/include/KDChart/KDChartBarDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractCartesianDiagram.h \
@@ -4050,21 +4144,7 @@ obj/LayerChartBase.o: LayerChartBase.cpp LayerChartBase.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractAxis.h \
 		../KDChart-2.6.0/include/KDChart/KDChartRulerAttributes.h \
 		Global.h \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile
+		CStreamData.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/LayerChartBase.o LayerChartBase.cpp
 
 obj/Global.o: Global.cpp Global.h \
@@ -4131,26 +4211,7 @@ obj/Global.o: Global.cpp Global.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		DataProvider.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
-		tools_export.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
-		ModelBarDiagram.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		../rabbitMq/include/ListenTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
-		../rabbitMq/include/TestTick.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h
+		CStreamData.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/Global.o Global.cpp
 
 obj/DataProvider.o: DataProvider.cpp DataProvider.h \
@@ -4202,16 +4263,14 @@ obj/DataProvider.o: DataProvider.cpp DataProvider.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
-		ModelStock.h \
-		TableModel.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
@@ -4219,12 +4278,25 @@ obj/DataProvider.o: DataProvider.cpp DataProvider.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		ModelStock.h \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
 		tools_export.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
 		ModelBarDiagram.h \
+		../rabbitMq/include/ListenTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
+		../rabbitMq/include/TestTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		CDefine.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/DataProvider.o DataProvider.cpp
 
@@ -4401,6 +4473,57 @@ obj/LayerTopMenu.o: LayerTopMenu.cpp LayerTopMenu.h \
 		obj/ui_header/ui_LayerTopMenu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/LayerTopMenu.o LayerTopMenu.cpp
 
+obj/CStreamData.o: CStreamData.cpp CStreamData.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/CStreamData.o CStreamData.cpp
+
 obj/qrc_res.o: qrc_res.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/qrc_res.o qrc_res.cpp
 
@@ -4451,6 +4574,9 @@ obj/moc_ModelBarDiagram.o: obj/moc_ModelBarDiagram.cpp
 
 obj/moc_LayerTopMenu.o: obj/moc_LayerTopMenu.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/moc_LayerTopMenu.o obj/moc_LayerTopMenu.cpp
+
+obj/moc_CStreamData.o: obj/moc_CStreamData.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/moc_CStreamData.o obj/moc_CStreamData.cpp
 
 ####### Install
 

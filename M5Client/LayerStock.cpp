@@ -11,8 +11,6 @@ LayerStock::LayerStock(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    m_cModel=&Dataprovider.m_modelStock;
-
     initUi();
 
     initLegend();
@@ -21,7 +19,7 @@ LayerStock::LayerStock(QWidget *parent) :
 
     m_diagram.setType( StockDiagram::Candlestick );
 
-    m_diagram.setModel( m_cModel );
+    m_diagram.setModel(&m_cModel );
 
     init3D();
 
@@ -116,11 +114,11 @@ void LayerStock::initUi()
 
 
 
-    LineDiagram *m= new LineDiagram;
-    m->setCenterDataPoints( true );
-    m->setPen(QColor( Qt::red));
-    m->setModel(m_cModel);
-    this->coordinatePlane()->addDiagram( m);
+//    LineDiagram *m= new LineDiagram;
+//    m->setCenterDataPoints( true );
+//    m->setPen(QColor( Qt::red));
+//    m->setModel(m_cModel);
+//    this->coordinatePlane()->addDiagram( m);
 
 }
 
