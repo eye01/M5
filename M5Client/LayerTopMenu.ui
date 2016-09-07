@@ -60,12 +60,15 @@
           <widget class="QPushButton" name="btnTick">
            <property name="minimumSize">
             <size>
-             <width>80</width>
+             <width>60</width>
              <height>0</height>
             </size>
            </property>
            <property name="text">
             <string>BY TICK</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -73,25 +76,31 @@
           <widget class="QPushButton" name="btn1k">
            <property name="minimumSize">
             <size>
-             <width>80</width>
+             <width>60</width>
              <height>0</height>
             </size>
            </property>
            <property name="text">
             <string>1分k線</string>
            </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item row="0" column="7">
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="btn15k">
            <property name="minimumSize">
             <size>
-             <width>80</width>
+             <width>60</width>
              <height>0</height>
             </size>
            </property>
            <property name="text">
             <string>15分k線</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -99,12 +108,15 @@
           <widget class="QPushButton" name="btn3k">
            <property name="minimumSize">
             <size>
-             <width>80</width>
+             <width>60</width>
              <height>0</height>
             </size>
            </property>
            <property name="text">
             <string>3分k線</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -112,12 +124,15 @@
           <widget class="QPushButton" name="btn5k">
            <property name="minimumSize">
             <size>
-             <width>80</width>
+             <width>60</width>
              <height>0</height>
             </size>
            </property>
            <property name="text">
             <string>5分k線</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -125,12 +140,15 @@
           <widget class="QPushButton" name="btn10k">
            <property name="minimumSize">
             <size>
-             <width>80</width>
+             <width>60</width>
              <height>0</height>
             </size>
            </property>
            <property name="text">
             <string>10分k線</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -138,7 +156,7 @@
           <widget class="QComboBox" name="comboBox">
            <property name="minimumSize">
             <size>
-             <width>120</width>
+             <width>100</width>
              <height>0</height>
             </size>
            </property>
@@ -174,7 +192,7 @@
           <widget class="QLineEdit" name="lineEdit">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>80</width>
              <height>0</height>
             </size>
            </property>
@@ -190,15 +208,18 @@
           </widget>
          </item>
          <item row="0" column="8">
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="btn30k">
            <property name="minimumSize">
             <size>
-             <width>80</width>
+             <width>60</width>
              <height>0</height>
             </size>
            </property>
            <property name="text">
             <string>30分k線</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
           </widget>
          </item>

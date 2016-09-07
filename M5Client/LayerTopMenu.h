@@ -2,6 +2,7 @@
 #define LAYERTOPMENU_H
 
 #include <QWidget>
+#include <QButtonGroup>
 
 namespace Ui {
 class LayerTopMenu;

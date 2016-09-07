@@ -58,7 +58,7 @@ void TestTick::run()
     {
         loopListen();
 
-        msleep(5000);
+        msleep(1000);
 
     }
 }

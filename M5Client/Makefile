@@ -2263,6 +2263,8 @@ obj/moc_LayerTopMenu.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget 
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
 		LayerTopMenu.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include LayerTopMenu.h -o obj/moc_LayerTopMenu.cpp
@@ -2932,7 +2934,9 @@ obj/ui_header/ui_StageChart.h: StageChart.ui \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/uic StageChart.ui -o obj/ui_header/ui_StageChart.h
 
 obj/ui_header/ui_LayerBarDiagram.h: LayerBarDiagram.ui \
@@ -3314,7 +3318,66 @@ obj/widget.o: widget.cpp widget.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
 		CStreamData.h \
-		obj/ui_header/ui_widget.h
+		obj/ui_header/ui_widget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QAction \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qaction.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qicon.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QGridLayout \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qslider.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QSpacerItem \
+		StageChart.h \
+		DataProvider.h \
+		ModelStock.h \
+		TableModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractTableModel \
+		tools_export.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
+		ModelBarDiagram.h \
+		../rabbitMq/include/ListenTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QThread \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
+		../rabbitMq/include/TestTick.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		CDefine.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/widget.o widget.cpp
 
 obj/LayerStock.o: LayerStock.cpp LayerStock.h \
@@ -3520,7 +3583,19 @@ obj/LayerStock.o: LayerStock.cpp LayerStock.h \
 		tools_export.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		obj/ui_header/ui_LayerStock.h
+		obj/ui_header/ui_LayerStock.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QAction \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qaction.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qheaderview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/LayerStock.o LayerStock.cpp
 
 obj/TableModel.o: TableModel.cpp TableModel.h \
@@ -3792,7 +3867,123 @@ obj/StageChart.o: StageChart.cpp StageChart.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
 		CDefine.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
-		obj/ui_header/ui_StageChart.h
+		obj/ui_header/ui_StageChart.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QAction \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qaction.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qicon.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QGridLayout \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qslider.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		LayerBarDiagram.h \
+		LayerChartBase.h \
+		../KDChart-2.6.0/include/KDChart/KDChartChart \
+		../KDChart-2.6.0/include/KDChart/KDChartChart.h \
+		../KDChart-2.6.0/include/KDChart/kdchart_export.h \
+		../KDChart-2.6.0/include/KDChart/KDChartGlobal.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtAlgorithms \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPointF \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/Qt \
+		../KDChart-2.6.0/include/KDChart/KDChartAbstractCoordinatePlane \
+		../KDChart-2.6.0/include/KDChart/KDChartAbstractCoordinatePlane.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
+		../KDChart-2.6.0/include/KDChart/KDChartAbstractArea.h \
+		../KDChart-2.6.0/include/KDChart/KDChartAbstractAreaBase.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QSizeF \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QRectF \
+		../KDChart-2.6.0/include/KDChart/KDChartLayoutItems.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QBrush \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QFont \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QFontMetricsF \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLayout \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLayoutItem \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QPen \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h \
+		../KDChart-2.6.0/include/KDChart/KDChartTextAttributes.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaType \
+		../KDChart-2.6.0/include/KDChart/KDChartMeasure.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStack \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstack.h \
+		../KDChart-2.6.0/include/KDChart/KDChartEnums.h \
+		../KDChart-2.6.0/include/KDChart/KDChartMarkerAttributes.h \
+		../KDChart-2.6.0/include/KDChart/KDChartRelativePosition.h \
+		../KDChart-2.6.0/include/KDChart/KDChartAbstractDiagram.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QAbstractItemView \
+		../KDChart-2.6.0/include/KDChart/KDChartAttributesModel.h \
+		../KDChart-2.6.0/include/KDChart/KDChartAbstractProxyModel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QAbstractProxyModel \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractproxymodel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMap \
+		../KDChart-2.6.0/include/KDChart/KDChartBackgroundAttributes \
+		../KDChart-2.6.0/include/KDChart/KDChartBackgroundAttributes.h \
+		../KDChart-2.6.0/include/KDChart/KDChartCartesianAxis \
+		../KDChart-2.6.0/include/KDChart/KDChartCartesianAxis.h \
+		../KDChart-2.6.0/include/KDChart/KDChartAbstractAxis.h \
+		../KDChart-2.6.0/include/KDChart/KDChartRulerAttributes.h \
+		Global.h \
+		CStreamData.h \
+		../KDChart-2.6.0/include/KDChart/KDChartBarDiagram \
+		../KDChart-2.6.0/include/KDChart/KDChartBarDiagram.h \
+		../KDChart-2.6.0/include/KDChart/KDChartAbstractCartesianDiagram.h \
+		../KDChart-2.6.0/include/KDChart/KDChartCartesianCoordinatePlane.h \
+		../KDChart-2.6.0/include/KDChart/KDChartBarAttributes.h \
+		LayerStock.h \
+		../KDChart-2.6.0/include/KDChart/KDChartLegend \
+		../KDChart-2.6.0/include/KDChart/KDChartLegend.h \
+		../KDChart-2.6.0/include/KDChart/KDChartAbstractAreaWidget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QPaintEvent \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QPainter \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpainter.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QRect \
+		../KDChart-2.6.0/include/KDChart/KDChartPosition.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QCoreApplication \
+		../KDChart-2.6.0/include/KDChart/KDChartStockDiagram \
+		../KDChart-2.6.0/include/KDChart/KDChartStockDiagram.h \
+		../KDChart-2.6.0/include/KDChart/KDChartStockBarAttributes.h \
+		../KDChart-2.6.0/include/KDChart/KDChartThreeDBarAttributes.h \
+		../KDChart-2.6.0/include/KDChart/KDChartAbstractThreeDAttributes.h \
+		../KDChart-2.6.0/include/KDChart/KDChartThreeDBarAttributes \
+		../KDChart-2.6.0/include/KDChart/KDChartGridAttributes \
+		../KDChart-2.6.0/include/KDChart/KDChartGridAttributes.h \
+		../KDChart-2.6.0/include/KDChart/KDChartFrameAttributes \
+		../KDChart-2.6.0/include/KDChart/KDChartFrameAttributes.h \
+		../KDChart-2.6.0/include/KDChart/KDChartLineDiagram \
+		../KDChart-2.6.0/include/KDChart/KDChartLineDiagram.h \
+		../KDChart-2.6.0/include/KDChart/KDChartLineAttributes.h \
+		../KDChart-2.6.0/include/KDChart/KDChartValueTrackerAttributes.h \
+		LayerTopMenu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/StageChart.o StageChart.cpp
 
 obj/LayerBarDiagram.o: LayerBarDiagram.cpp LayerBarDiagram.h \
@@ -3974,7 +4165,21 @@ obj/LayerBarDiagram.o: LayerBarDiagram.cpp LayerBarDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartAbstractCartesianDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartCartesianCoordinatePlane.h \
 		../KDChart-2.6.0/include/KDChart/KDChartBarAttributes.h \
-		obj/ui_header/ui_LayerBarDiagram.h
+		obj/ui_header/ui_LayerBarDiagram.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QAction \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qaction.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qheaderview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/LayerBarDiagram.o LayerBarDiagram.cpp
 
 obj/LayerChartBase.o: LayerChartBase.cpp LayerChartBase.h \
@@ -4470,7 +4675,57 @@ obj/LayerTopMenu.o: LayerTopMenu.cpp LayerTopMenu.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
-		obj/ui_header/ui_LayerTopMenu.h
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		obj/ui_header/ui_LayerTopMenu.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QAction \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qaction.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qicon.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QComboBox \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qcombobox.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qslider.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QGridLayout \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QGroupBox \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLineEdit \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextcursor.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextformat.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/LayerTopMenu.o LayerTopMenu.cpp
 
 obj/CStreamData.o: CStreamData.cpp CStreamData.h \

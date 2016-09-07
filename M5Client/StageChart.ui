@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout" rowstretch="2,1,5,3" rowminimumheight="2,1,5,3">
+  <layout class="QGridLayout" name="gridLayout" rowstretch="2,1,10,6" rowminimumheight="2,1,10,6">
    <property name="spacing">
     <number>0</number>
    </property>
