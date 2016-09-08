@@ -22,11 +22,11 @@ public:
 
     int iKtimer;
 
-
     void startMq(MQ_TYPE type,QStringList argv,int iMsec=1000);
 
-
     void stopMq();
+
+
 
 
 

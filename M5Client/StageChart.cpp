@@ -11,7 +11,9 @@ StageChart::StageChart(QWidget *parent) :
 
     m_data.m_modelBarDiagram=&ui->layerBar->m_cModel;
 
-    m_data.startMq(_stock,QStringList()<<"tse.*"<<"otc.*"<<"emg.*");
+//    m_data.startMq(_stock,QStringList()<<"tse.*"<<"otc.*"<<"emg.*");
+
+    m_data.startMq(_stock,QStringList()<<"tse.1477",100);
 }
 
 StageChart::~StageChart()

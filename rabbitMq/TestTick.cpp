@@ -2,13 +2,24 @@
 
 TestTick::TestTick(QObject *parent) : ListenTick(parent)
 {
-    m_iLoopMSec=3000;
+    m_iLoopMSec=1000;
     QObject::startTimer(1000);
 }
 
-int TestTick::setBindingKey(MQ_TYPE type, QStringList argv, int iLoopMSec)
+int TestTick::setBindingKey(QString sType, QStringList argv, int iLoopMSec)
 {
-    loadFile("/home/roger/q_project/M5/rabbitMq/ActionStock");
+
+    m_iLoopMSec=iLoopMSec;
+
+
+    QStringList list=QString(argv.at(0)).split(".");
+
+    if(list.length()>1)
+        m_sNums=list.at(1);
+
+    QString sFile=QString("../rabbitMq/data/%1_%2").arg(sType).arg(list.at(0));
+    qDebug()<<"test tick file : "<<sFile;
+    loadFile(sFile);
     return 0;
 }
 
@@ -16,16 +27,25 @@ int TestTick::setBindingKey(MQ_TYPE type, QStringList argv, int iLoopMSec)
 
 void TestTick::loopListen()
 {
+
         if(m_iIdx!=-1)
         {
-
             if(m_iIdx>=m_listData.length())
                 m_iIdx=0;
 
             if(m_listData.length()>1)
             {
-                qDebug()<<"test tick : "<<m_listData.at(m_iIdx);
-                emit signalTick(m_listData.at(m_iIdx++));
+                QStringList listCurrentData=QString(m_listData.at(m_iIdx)).split(" ");
+                if(m_sNums=="*")
+                {
+                    emit signalTick(m_listData.at(m_iIdx));
+                }
+                else if(listCurrentData.length()>1 && listCurrentData.at(0) == m_sNums)
+                {
+                    qDebug()<<" select  id ="<<m_sNums<<"is: "<<m_listData.at(m_iIdx);
+                    emit signalTick(m_listData.at(m_iIdx));
+                }
+                m_iIdx++;
             }
         }
 
@@ -42,7 +62,7 @@ void TestTick::loadFile(QString sFile)
     QTextStream in(&file);
 
     int iLine=0;
-    while (!in.atEnd() && iLine<100)
+    while (!in.atEnd())
     {
 
         m_listData.append(in.readLine());
@@ -56,9 +76,10 @@ void TestTick::run()
 {
     while(1)
     {
+
         loopListen();
 
-        msleep(1000);
+        msleep(m_iLoopMSec);
 
     }
 }

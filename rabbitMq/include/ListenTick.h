@@ -22,16 +22,6 @@
 
 #define TAIFEX "taifex"
 
-enum MQ_TYPE
-{
-    //股票
-    _stock=0,
-    //期貨
-    _taifex=1
-};
-
-
-
 
 class ListenTick : public QThread
 {
@@ -63,7 +53,7 @@ public:
 
 
 
-    int setBindingKey(MQ_TYPE type, QStringList argv,int iLoopMSec=500);
+    int setBindingKey(QString sType, QStringList argv, int iLoopMSec=500);
 
     void close();
 protected:
@@ -72,7 +62,7 @@ protected:
 
     bool m_bIsRun;
 
-    bool m_iLoopMSec;
+    int m_iLoopMSec;
 
     amqp_socket_t *m_socket;
 

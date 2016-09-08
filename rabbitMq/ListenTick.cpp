@@ -58,7 +58,7 @@ int ListenTick::open()
     return 0;
 }
 
-int ListenTick::setBindingKey(MQ_TYPE type,QStringList argv,int iLoopMSec)
+int ListenTick::setBindingKey(QString sType, QStringList argv, int iLoopMSec)
 {
     if(!m_bIsOpen)
         open();
@@ -66,8 +66,8 @@ int ListenTick::setBindingKey(MQ_TYPE type,QStringList argv,int iLoopMSec)
     m_bIsRun=false;
     char const *exchange="stock";
 
-    if(type==_taifex)
-        exchange="taifex";
+
+        exchange=sType.toStdString().c_str();
     m_iLoopMSec=iLoopMSec;
 
     int iRe=0;

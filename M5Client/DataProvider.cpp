@@ -14,7 +14,7 @@ DataProvider::DataProvider(QObject *parent) : QObject(parent)
 //    list.append(double(11));
 
 //    m_modelStock->appendData("AA",list);
-    //QObject::startTimer(1000);
+    QObject::startTimer(500);
 
     //m_listKtimer.append(1000);
 }
@@ -25,6 +25,7 @@ void DataProvider::startMq(MQ_TYPE type, QStringList argv, int iMsec)
     if(m_listen==NULL)
     {
 #if TEST_TICK
+        qDebug()<<"Test Tick";
         m_listen=new TestTick(this);
 #else
         m_listen=new ListenTick(this);
@@ -33,7 +34,7 @@ void DataProvider::startMq(MQ_TYPE type, QStringList argv, int iMsec)
 
     }
 
-    m_listen->setBindingKey(type,argv,iMsec);
+    m_listen->setBindingKey("stock",argv,iMsec);
     m_listen->start();
 }
 
@@ -66,21 +67,7 @@ void DataProvider::timerEvent(QTimerEvent *)
     //    July, 58.7, 68.5, 50.7, 55.3
     //   開盤、最高、最低、收盤
 
-    QVector<QVariant> list;
-    list.append(double(10));
-    list.append(double(14));
-    list.append(double(12));
-    list.append(double(11));
 
-    m_modelStock->appendData("AA",list);
-
-
-    QVector<QVariant> list2;
-    list2.append(double(6));
-    list2.append(double(0));
-    list2.append(double(0));
-    list2.append(double(0));
-    m_modelBarDiagram->appendData("AA",list2);
 
 }
 
@@ -93,7 +80,7 @@ void DataProvider::slotTick(QString sTick)
         double iCost=QString(listTick.at(3)).toDouble();
         QString sNums=QString(listTick.at(4));
 
-        qDebug()<<"cost : "<<iCost<<" nums : "<<sNums;
+        qDebug()<< "id : "<<listTick.at(0)<< "   ,cost : "<<iCost<<" nums : "<<sNums;
         QVector<QVariant> list;
         list.append(iCost);
         list.append(iCost);

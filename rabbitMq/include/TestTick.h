@@ -10,7 +10,7 @@ class TestTick : public ListenTick
     Q_OBJECT
 public:
     explicit TestTick(QObject *parent = 0);
-    int setBindingKey(MQ_TYPE type, QStringList argv, int iLoopMSec =3000);
+    int setBindingKey(QString sType, QStringList argv, int iLoopMSec =3000);
     void close(){}
 private:
 
@@ -20,6 +20,8 @@ private:
     void loopListen();
 
     int m_iIdx;
+    QString m_sNums;
+
     QStringList m_listData;
     void loadFile(QString sFile);
     void run();

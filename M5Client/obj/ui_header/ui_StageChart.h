@@ -54,8 +54,8 @@ public:
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         widget_3 = new LayerTopMenu(StageChart);
         widget_3->setObjectName(QStringLiteral("widget_3"));
-        widget_3->setMinimumSize(QSize(0, 80));
-        widget_3->setMaximumSize(QSize(16777215, 80));
+        widget_3->setMinimumSize(QSize(0, 120));
+        widget_3->setMaximumSize(QSize(16777215, 120));
 
         gridLayout->addWidget(widget_3, 0, 0, 1, 1);
 

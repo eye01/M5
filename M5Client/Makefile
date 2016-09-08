@@ -62,7 +62,8 @@ SOURCES       = ../rabbitMq/ListenTick.cpp \
 		DataProvider.cpp \
 		ModelBarDiagram.cpp \
 		LayerTopMenu.cpp \
-		CStreamData.cpp qrc_res.cpp \
+		CStreamData.cpp \
+		CKLineData.cpp qrc_res.cpp \
 		obj/moc_M5Library.cpp \
 		obj/moc_Network.cpp \
 		obj/moc_DataBase.cpp \
@@ -79,7 +80,8 @@ SOURCES       = ../rabbitMq/ListenTick.cpp \
 		obj/moc_DataProvider.cpp \
 		obj/moc_ModelBarDiagram.cpp \
 		obj/moc_LayerTopMenu.cpp \
-		obj/moc_CStreamData.cpp
+		obj/moc_CStreamData.cpp \
+		obj/moc_CKLineData.cpp
 OBJECTS       = obj/ListenTick.o \
 		obj/TestTick.o \
 		obj/main.o \
@@ -95,6 +97,7 @@ OBJECTS       = obj/ListenTick.o \
 		obj/ModelBarDiagram.o \
 		obj/LayerTopMenu.o \
 		obj/CStreamData.o \
+		obj/CKLineData.o \
 		obj/qrc_res.o \
 		obj/moc_M5Library.o \
 		obj/moc_Network.o \
@@ -112,7 +115,8 @@ OBJECTS       = obj/ListenTick.o \
 		obj/moc_DataProvider.o \
 		obj/moc_ModelBarDiagram.o \
 		obj/moc_LayerTopMenu.o \
-		obj/moc_CStreamData.o
+		obj/moc_CStreamData.o \
+		obj/moc_CKLineData.o
 DIST          = ../../../Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt5.7.0/5.7/gcc_64/mkspecs/common/unix.conf \
 		../../../Qt5.7.0/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -283,7 +287,8 @@ DIST          = ../../../Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		ModelBarDiagram.h \
 		LayerTopMenu.h \
 		CStreamData.h \
-		CDefine.h ../rabbitMq/ListenTick.cpp \
+		CDefine.h \
+		CKLineData.h ../rabbitMq/ListenTick.cpp \
 		../rabbitMq/TestTick.cpp \
 		main.cpp \
 		widget.cpp \
@@ -297,7 +302,8 @@ DIST          = ../../../Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		DataProvider.cpp \
 		ModelBarDiagram.cpp \
 		LayerTopMenu.cpp \
-		CStreamData.cpp
+		CStreamData.cpp \
+		CKLineData.cpp
 QMAKE_TARGET  = M5ClientLinux
 DESTDIR       = ../bin/
 TARGET        = ../bin/M5ClientLinux
@@ -644,8 +650,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents res.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../M5Lib/include/M5Library.h ../M5Lib/include/Network.h ../M5Lib/include/DataBase.h ../rabbitMq/include/ListenTick.h ../rabbitMq/utils.h ../rabbitMq/include/TestTick.h widget.h LayerStock.h tools_export.h TableModel.h ModelStock.h StageChart.h LayerBarDiagram.h LayerChartBase.h Global.h DataProvider.h ModelBarDiagram.h LayerTopMenu.h CStreamData.h CDefine.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../rabbitMq/ListenTick.cpp ../rabbitMq/TestTick.cpp main.cpp widget.cpp LayerStock.cpp TableModel.cpp ModelStock.cpp StageChart.cpp LayerBarDiagram.cpp LayerChartBase.cpp Global.cpp DataProvider.cpp ModelBarDiagram.cpp LayerTopMenu.cpp CStreamData.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../M5Lib/include/M5Library.h ../M5Lib/include/Network.h ../M5Lib/include/DataBase.h ../rabbitMq/include/ListenTick.h ../rabbitMq/utils.h ../rabbitMq/include/TestTick.h widget.h LayerStock.h tools_export.h TableModel.h ModelStock.h StageChart.h LayerBarDiagram.h LayerChartBase.h Global.h DataProvider.h ModelBarDiagram.h LayerTopMenu.h CStreamData.h CDefine.h CKLineData.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../rabbitMq/ListenTick.cpp ../rabbitMq/TestTick.cpp main.cpp widget.cpp LayerStock.cpp TableModel.cpp ModelStock.cpp StageChart.cpp LayerBarDiagram.cpp LayerChartBase.cpp Global.cpp DataProvider.cpp ModelBarDiagram.cpp LayerTopMenu.cpp CStreamData.cpp CKLineData.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents widget.ui LayerStock.ui StageChart.ui LayerBarDiagram.ui LayerTopMenu.ui $(DISTDIR)/
 
 
@@ -677,9 +683,9 @@ qrc_res.cpp: res.qrc \
 		OHLC.csv
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/rcc -name res res.qrc -o qrc_res.cpp
 
-compiler_moc_header_make_all: obj/moc_M5Library.cpp obj/moc_Network.cpp obj/moc_DataBase.cpp obj/moc_ListenTick.cpp obj/moc_TestTick.cpp obj/moc_widget.cpp obj/moc_LayerStock.cpp obj/moc_TableModel.cpp obj/moc_ModelStock.cpp obj/moc_StageChart.cpp obj/moc_LayerBarDiagram.cpp obj/moc_LayerChartBase.cpp obj/moc_Global.cpp obj/moc_DataProvider.cpp obj/moc_ModelBarDiagram.cpp obj/moc_LayerTopMenu.cpp obj/moc_CStreamData.cpp
+compiler_moc_header_make_all: obj/moc_M5Library.cpp obj/moc_Network.cpp obj/moc_DataBase.cpp obj/moc_ListenTick.cpp obj/moc_TestTick.cpp obj/moc_widget.cpp obj/moc_LayerStock.cpp obj/moc_TableModel.cpp obj/moc_ModelStock.cpp obj/moc_StageChart.cpp obj/moc_LayerBarDiagram.cpp obj/moc_LayerChartBase.cpp obj/moc_Global.cpp obj/moc_DataProvider.cpp obj/moc_ModelBarDiagram.cpp obj/moc_LayerTopMenu.cpp obj/moc_CStreamData.cpp obj/moc_CKLineData.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) obj/moc_M5Library.cpp obj/moc_Network.cpp obj/moc_DataBase.cpp obj/moc_ListenTick.cpp obj/moc_TestTick.cpp obj/moc_widget.cpp obj/moc_LayerStock.cpp obj/moc_TableModel.cpp obj/moc_ModelStock.cpp obj/moc_StageChart.cpp obj/moc_LayerBarDiagram.cpp obj/moc_LayerChartBase.cpp obj/moc_Global.cpp obj/moc_DataProvider.cpp obj/moc_ModelBarDiagram.cpp obj/moc_LayerTopMenu.cpp obj/moc_CStreamData.cpp
+	-$(DEL_FILE) obj/moc_M5Library.cpp obj/moc_Network.cpp obj/moc_DataBase.cpp obj/moc_ListenTick.cpp obj/moc_TestTick.cpp obj/moc_widget.cpp obj/moc_LayerStock.cpp obj/moc_TableModel.cpp obj/moc_ModelStock.cpp obj/moc_StageChart.cpp obj/moc_LayerBarDiagram.cpp obj/moc_LayerChartBase.cpp obj/moc_Global.cpp obj/moc_DataProvider.cpp obj/moc_ModelBarDiagram.cpp obj/moc_LayerTopMenu.cpp obj/moc_CStreamData.cpp obj/moc_CKLineData.cpp
 obj/moc_M5Library.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
@@ -2320,6 +2326,58 @@ obj/moc_CStreamData.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		CStreamData.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CStreamData.h -o obj/moc_CStreamData.cpp
+
+obj/moc_CKLineData.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		CKLineData.h \
+		../../../Qt5.7.0/5.7/gcc_64/bin/moc
+	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CKLineData.h -o obj/moc_CKLineData.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -4779,6 +4837,57 @@ obj/CStreamData.o: CStreamData.cpp CStreamData.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/CStreamData.o CStreamData.cpp
 
+obj/CKLineData.o: CKLineData.cpp CKLineData.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/CKLineData.o CKLineData.cpp
+
 obj/qrc_res.o: qrc_res.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/qrc_res.o qrc_res.cpp
 
@@ -4832,6 +4941,9 @@ obj/moc_LayerTopMenu.o: obj/moc_LayerTopMenu.cpp
 
 obj/moc_CStreamData.o: obj/moc_CStreamData.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/moc_CStreamData.o obj/moc_CStreamData.cpp
+
+obj/moc_CKLineData.o: obj/moc_CKLineData.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/moc_CKLineData.o obj/moc_CKLineData.cpp
 
 ####### Install
 
