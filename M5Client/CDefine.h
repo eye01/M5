@@ -36,5 +36,17 @@ namespace TAIFEX_TYPE
 
 }
 
+struct MENU_SELECT
+{
+    QString sKind;
+
+    QString sType;
+
+    QString sId;
+
+    int iKLine;
+};
+
+
 
 #endif // CDEFINE_H

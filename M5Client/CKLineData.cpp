@@ -13,17 +13,26 @@ void CKLineData::init()
     m_iClose=-1;
 }
 
-void CKLineData::appedn(QString sCost)
+void CKLineData::setNums(QString sNums)
 {
-    int iCurrent=sCost.toFloat();
+    m_iNums=sNums.toDouble();
+}
+
+void CKLineData::setCost(QString sCost)
+{
+    float iCurrent=sCost.toFloat();
+
+
     if(iCurrent>m_iMax)
         m_iMax=iCurrent;
 
     if(iCurrent<m_iMin)
         m_iMin=iCurrent;
 
-    if(m_iOpen==-1)
-        m_iOpen=iCurrent;
+//    if(m_iOpen==-1)
+//        m_iOpen=iCurrent;
 
     m_iClose=iCurrent;
 }
+
+

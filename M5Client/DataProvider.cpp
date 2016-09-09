@@ -3,7 +3,7 @@
 DataProvider::DataProvider(QObject *parent) : QObject(parent)
 {
 
-    m_listen=NULL;
+
 
 
 
@@ -14,85 +14,47 @@ DataProvider::DataProvider(QObject *parent) : QObject(parent)
 //    list.append(double(11));
 
 //    m_modelStock->appendData("AA",list);
-    QObject::startTimer(500);
+    //QObject::startTimer(500);
 
     //m_listKtimer.append(1000);
 }
 
-void DataProvider::startMq(MQ_TYPE type, QStringList argv, int iMsec)
+
+
+//void DataProvider::timerEvent(QTimerEvent *)
+//{
+
+
+//    //ex
+//    //m_cModel->loadFromCSV( ":/OHLC.csv" );
+//    //    ,"Foobar Inc."
+//    //    January, 20.3, 42.4, 10.3, 32.0
+//    //    February, 32.0, 37.3, 20.0, 25.9
+//    //    March, 25.9, 33.7, 20.3, 29.0
+//    //    April, 29.9, 53.3, 28.1, 39.0
+//    //    May, 39.0, 45.0, 36.4, 41.9
+//    //    June, 41.9, 63.3, 41.0, 58.7
+//    //    July, 58.7, 68.5, 50.7, 55.3
+//    //   開盤、最高、最低、收盤
+
+
+
+//}
+
+void DataProvider::reflash(CKLineData *data)
 {
-
-    if(m_listen==NULL)
-    {
-#if TEST_TICK
-        qDebug()<<"Test Tick";
-        m_listen=new TestTick(this);
-#else
-        m_listen=new ListenTick(this);
-#endif
-        m_listen->connect(m_listen,SIGNAL(signalTick(QString)),this,SLOT(slotTick(QString)));
-
-    }
-
-    m_listen->setBindingKey("stock",argv,iMsec);
-    m_listen->start();
+    QString sHead=QTime::currentTime().toString("HH:mm:ss");
+    m_modelStock->reflash(sHead,data->stockData());
+    m_modelBarDiagram->reflash(QString(data->m_iNums),data->barData());
 }
 
-void DataProvider::stopMq()
-{
-    if(m_listen==NULL)
-        return;
-    m_listen->close();
-    m_listen->disconnect();
-    m_listen->quit();
-    m_listen->wait(1000);
-    m_listen->deleteLater();
-    m_listen=NULL;
-
-}
-
-void DataProvider::timerEvent(QTimerEvent *)
+void DataProvider::toNext()
 {
 
-
-    //ex
-    //m_cModel->loadFromCSV( ":/OHLC.csv" );
-    //    ,"Foobar Inc."
-    //    January, 20.3, 42.4, 10.3, 32.0
-    //    February, 32.0, 37.3, 20.0, 25.9
-    //    March, 25.9, 33.7, 20.3, 29.0
-    //    April, 29.9, 53.3, 28.1, 39.0
-    //    May, 39.0, 45.0, 36.4, 41.9
-    //    June, 41.9, 63.3, 41.0, 58.7
-    //    July, 58.7, 68.5, 50.7, 55.3
-    //   開盤、最高、最低、收盤
-
-
-
+   // QString sHead=QTime::currentTime().toString("HH:mm:ss");
+    m_modelStock->toNext();
+    m_modelBarDiagram->toNext();
 }
 
-void DataProvider::slotTick(QString sTick)
-{
-    QStringList listTick=sTick.split(" ");
 
-    if(listTick.length()>=5 && listTick.at(2)!="0" &&listTick.at(3)!="0" &&listTick.at(4)!="0")
-    {
-        double iCost=QString(listTick.at(3)).toDouble();
-        QString sNums=QString(listTick.at(4));
-
-        qDebug()<< "id : "<<listTick.at(0)<< "   ,cost : "<<iCost<<" nums : "<<sNums;
-        QVector<QVariant> list;
-        list.append(iCost);
-        list.append(iCost);
-        list.append(iCost);
-        list.append(iCost);
-        m_modelStock->appendData(QString(listTick.at(1)),list);
-        QVector<QVariant> list2;
-        list2.append(double(0));
-        list2.append(double(0));
-        list2.append(sNums.toDouble());
-        list2.append(double(0));
-        m_modelBarDiagram->appendData(sNums,list2);
-    }
-}
 

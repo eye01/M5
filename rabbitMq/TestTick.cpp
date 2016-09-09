@@ -8,7 +8,7 @@ TestTick::TestTick(QObject *parent) : ListenTick(parent)
 
 int TestTick::setBindingKey(QString sType, QStringList argv, int iLoopMSec)
 {
-
+    m_bIsRun=true;
     m_iLoopMSec=iLoopMSec;
 
 
@@ -42,7 +42,7 @@ void TestTick::loopListen()
                 }
                 else if(listCurrentData.length()>1 && listCurrentData.at(0) == m_sNums)
                 {
-                    qDebug()<<" select  id ="<<m_sNums<<"is: "<<m_listData.at(m_iIdx);
+                  //  qDebug()<<" select  id ="<<m_sNums<<"is: "<<m_listData.at(m_iIdx);
                     emit signalTick(m_listData.at(m_iIdx));
                 }
                 m_iIdx++;
@@ -74,12 +74,12 @@ void TestTick::loadFile(QString sFile)
 
 void TestTick::run()
 {
-    while(1)
+    while(m_bIsRun)
     {
 
         loopListen();
 
-        msleep(m_iLoopMSec);
+        msleep(3000);
 
     }
 }

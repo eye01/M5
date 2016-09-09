@@ -36,12 +36,12 @@ public:
     QStackedWidget *stackSelectType;
     QWidget *page;
     QHBoxLayout *horizontalLayout;
-    QComboBox *comboBox;
-    QLineEdit *lineEdit;
+    QComboBox *cbStockType;
+    QLineEdit *txtId;
     QWidget *page_2;
     QGridLayout *gridLayout_2;
-    QComboBox *comboBox_2;
-    QComboBox *comboBox_3;
+    QComboBox *cbTaifexType;
+    QComboBox *cbTaifexId;
     QStackedWidget *stackSelectItem;
     QWidget *page_3;
     QGridLayout *gridLayout;
@@ -84,9 +84,9 @@ public:
         cbKind->setFont(font);
         stackSelectType = new QStackedWidget(groupBox);
         stackSelectType->setObjectName(QStringLiteral("stackSelectType"));
-        stackSelectType->setGeometry(QRect(120, 50, 200, 43));
-        stackSelectType->setMinimumSize(QSize(180, 0));
-        stackSelectType->setMaximumSize(QSize(200, 16777215));
+        stackSelectType->setGeometry(QRect(120, 50, 220, 43));
+        stackSelectType->setMinimumSize(QSize(220, 0));
+        stackSelectType->setMaximumSize(QSize(220, 16777215));
         QFont font1;
         font1.setPointSize(14);
         stackSelectType->setFont(font1);
@@ -96,21 +96,23 @@ public:
         horizontalLayout->setSpacing(5);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(5, 0, 5, 0);
-        comboBox = new QComboBox(page);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setMinimumSize(QSize(75, 0));
-        comboBox->setMaximumSize(QSize(100, 16777215));
-        comboBox->setFont(font1);
+        cbStockType = new QComboBox(page);
+        cbStockType->setObjectName(QStringLiteral("cbStockType"));
+        cbStockType->setMinimumSize(QSize(105, 0));
+        cbStockType->setMaximumSize(QSize(105, 16777215));
+        cbStockType->setFont(font1);
 
-        horizontalLayout->addWidget(comboBox);
+        horizontalLayout->addWidget(cbStockType);
 
-        lineEdit = new QLineEdit(page);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setMinimumSize(QSize(100, 0));
-        lineEdit->setMaximumSize(QSize(200, 16777215));
-        lineEdit->setFont(font1);
+        txtId = new QLineEdit(page);
+        txtId->setObjectName(QStringLiteral("txtId"));
+        txtId->setMinimumSize(QSize(90, 0));
+        txtId->setMaximumSize(QSize(90, 16777215));
+        QFont font2;
+        font2.setPointSize(12);
+        txtId->setFont(font2);
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(txtId);
 
         stackSelectType->addWidget(page);
         page_2 = new QWidget();
@@ -119,18 +121,18 @@ public:
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         gridLayout_2->setHorizontalSpacing(5);
         gridLayout_2->setVerticalSpacing(0);
-        gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        comboBox_2 = new QComboBox(page_2);
-        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
-        comboBox_2->setFont(font1);
+        gridLayout_2->setContentsMargins(5, 0, 5, 0);
+        cbTaifexType = new QComboBox(page_2);
+        cbTaifexType->setObjectName(QStringLiteral("cbTaifexType"));
+        cbTaifexType->setFont(font1);
 
-        gridLayout_2->addWidget(comboBox_2, 0, 0, 1, 1);
+        gridLayout_2->addWidget(cbTaifexType, 0, 0, 1, 1);
 
-        comboBox_3 = new QComboBox(page_2);
-        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
-        comboBox_3->setFont(font1);
+        cbTaifexId = new QComboBox(page_2);
+        cbTaifexId->setObjectName(QStringLiteral("cbTaifexId"));
+        cbTaifexId->setFont(font1);
 
-        gridLayout_2->addWidget(comboBox_3, 0, 1, 1, 1);
+        gridLayout_2->addWidget(cbTaifexId, 0, 1, 1, 1);
 
         stackSelectType->addWidget(page_2);
         stackSelectItem = new QStackedWidget(groupBox);
@@ -146,10 +148,9 @@ public:
         btnTick = new QPushButton(page_3);
         btnTick->setObjectName(QStringLiteral("btnTick"));
         btnTick->setMinimumSize(QSize(60, 0));
-        QFont font2;
-        font2.setPointSize(12);
         btnTick->setFont(font2);
         btnTick->setCheckable(true);
+        btnTick->setChecked(false);
 
         gridLayout->addWidget(btnTick, 0, 0, 1, 1);
 
@@ -158,6 +159,7 @@ public:
         btn1k->setMinimumSize(QSize(60, 0));
         btn1k->setFont(font2);
         btn1k->setCheckable(true);
+        btn1k->setChecked(false);
 
         gridLayout->addWidget(btn1k, 0, 1, 1, 1);
 
@@ -214,7 +216,7 @@ public:
 
         retranslateUi(LayerTopMenu);
 
-        stackSelectType->setCurrentIndex(1);
+        stackSelectType->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(LayerTopMenu);
@@ -229,20 +231,22 @@ public:
          << QApplication::translate("LayerTopMenu", "\350\202\241\347\245\250", 0)
          << QApplication::translate("LayerTopMenu", "\346\234\237\350\262\250", 0)
         );
-        comboBox->clear();
-        comboBox->insertItems(0, QStringList()
-         << QApplication::translate("LayerTopMenu", "\344\270\212\345\270\202", 0)
-         << QApplication::translate("LayerTopMenu", "\344\270\212\346\253\203", 0)
-         << QApplication::translate("LayerTopMenu", "\350\210\210\346\253\203", 0)
+        cbStockType->clear();
+        cbStockType->insertItems(0, QStringList()
+         << QApplication::translate("LayerTopMenu", "\344\270\212\345\270\202\350\202\241\347\245\250", 0)
+         << QApplication::translate("LayerTopMenu", "\344\270\212\346\253\203\350\202\241\347\245\250", 0)
+         << QApplication::translate("LayerTopMenu", "\350\210\210\346\253\203\350\202\241\347\245\250", 0)
+         << QApplication::translate("LayerTopMenu", "\344\270\212\345\270\202\346\254\212\350\255\211", 0)
+         << QApplication::translate("LayerTopMenu", "\344\270\212\346\253\203\346\254\212\350\255\211", 0)
         );
-        lineEdit->setPlaceholderText(QApplication::translate("LayerTopMenu", "\350\253\213\350\274\270\345\205\245\344\273\243\350\231\237", 0));
-        comboBox_2->clear();
-        comboBox_2->insertItems(0, QStringList()
+        txtId->setPlaceholderText(QApplication::translate("LayerTopMenu", "\350\253\213\350\274\270\345\205\245\344\273\243\350\231\237", 0));
+        cbTaifexType->clear();
+        cbTaifexType->insertItems(0, QStringList()
          << QApplication::translate("LayerTopMenu", "\350\202\241\347\245\250\346\234\237\350\262\250", 0)
          << QApplication::translate("LayerTopMenu", "\351\201\270\346\223\207\346\254\212", 0)
         );
-        comboBox_3->clear();
-        comboBox_3->insertItems(0, QStringList()
+        cbTaifexId->clear();
+        cbTaifexId->insertItems(0, QStringList()
          << QApplication::translate("LayerTopMenu", "\345\244\247\345\217\260\346\214\207", 0)
          << QApplication::translate("LayerTopMenu", "\345\260\217\345\217\260\346\214\207", 0)
         );

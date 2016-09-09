@@ -1586,7 +1586,13 @@ obj/moc_StageChart.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		../rabbitMq/include/TestTick.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
 		CDefine.h \
+		CKLineData.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QValidator \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTime \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
 		StageChart.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include StageChart.h -o obj/moc_StageChart.cpp
@@ -2094,7 +2100,13 @@ obj/moc_DataProvider.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		CDefine.h \
+		CKLineData.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QValidator \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTime \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
 		DataProvider.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include DataProvider.h -o obj/moc_DataProvider.cpp
@@ -2271,6 +2283,15 @@ obj/moc_LayerTopMenu.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget 
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPropertyAnimation \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpropertyanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariantanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QResizeEvent \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
+		CDefine.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
 		LayerTopMenu.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include LayerTopMenu.h -o obj/moc_LayerTopMenu.cpp
@@ -2375,6 +2396,24 @@ obj/moc_CKLineData.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QValidator \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qset.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		CKLineData.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CKLineData.h -o obj/moc_CKLineData.cpp
@@ -2504,7 +2543,13 @@ obj/ui_header/ui_widget.h: widget.ui \
 		../rabbitMq/include/TestTick.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
 		CDefine.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent
+		CKLineData.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QValidator \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTime \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/uic widget.ui -o obj/ui_header/ui_widget.h
 
 obj/ui_header/ui_LayerStock.h: LayerStock.ui \
@@ -2994,7 +3039,16 @@ obj/ui_header/ui_StageChart.h: StageChart.ui \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPropertyAnimation \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpropertyanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariantanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QResizeEvent \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
+		CDefine.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/uic StageChart.ui -o obj/ui_header/ui_StageChart.h
 
 obj/ui_header/ui_LayerBarDiagram.h: LayerBarDiagram.ui \
@@ -3435,7 +3489,11 @@ obj/widget.o: widget.cpp widget.h \
 		../rabbitMq/include/TestTick.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
 		CDefine.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent
+		CKLineData.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QValidator \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTime \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/widget.o widget.cpp
 
 obj/LayerStock.o: LayerStock.cpp LayerStock.h \
@@ -3924,7 +3982,13 @@ obj/StageChart.o: StageChart.cpp StageChart.h \
 		../rabbitMq/include/TestTick.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
 		CDefine.h \
+		CKLineData.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QValidator \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTime \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
 		obj/ui_header/ui_StageChart.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QAction \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qaction.h \
@@ -3954,8 +4018,6 @@ obj/StageChart.o: StageChart.cpp StageChart.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qslider.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyle.h \
@@ -4041,7 +4103,13 @@ obj/StageChart.o: StageChart.cpp StageChart.h \
 		../KDChart-2.6.0/include/KDChart/KDChartLineDiagram.h \
 		../KDChart-2.6.0/include/KDChart/KDChartLineAttributes.h \
 		../KDChart-2.6.0/include/KDChart/KDChartValueTrackerAttributes.h \
-		LayerTopMenu.h
+		LayerTopMenu.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPropertyAnimation \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpropertyanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariantanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QResizeEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/StageChart.o StageChart.cpp
 
 obj/LayerBarDiagram.o: LayerBarDiagram.cpp LayerBarDiagram.h \
@@ -4560,7 +4628,13 @@ obj/DataProvider.o: DataProvider.cpp DataProvider.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		CDefine.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent
+		CKLineData.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QValidator \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTime \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/DataProvider.o DataProvider.cpp
 
 obj/ModelBarDiagram.o: ModelBarDiagram.cpp ModelBarDiagram.h \
@@ -4735,6 +4809,15 @@ obj/LayerTopMenu.o: LayerTopMenu.cpp LayerTopMenu.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPropertyAnimation \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpropertyanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariantanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractanimation.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QResizeEvent \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
+		CDefine.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
 		obj/ui_header/ui_LayerTopMenu.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QAction \
@@ -4770,6 +4853,7 @@ obj/LayerTopMenu.o: LayerTopMenu.cpp LayerTopMenu.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qboxlayout.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QGroupBox \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QHBoxLayout \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QHeaderView \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qheaderview.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -4783,7 +4867,9 @@ obj/LayerTopMenu.o: LayerTopMenu.cpp LayerTopMenu.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextoption.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPushButton \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QStackedWidget \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstackedwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/LayerTopMenu.o LayerTopMenu.cpp
 
 obj/CStreamData.o: CStreamData.cpp CStreamData.h \
@@ -4885,7 +4971,25 @@ obj/CKLineData.o: CKLineData.cpp CKLineData.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVector \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/QValidator \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qset.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/CKLineData.o CKLineData.cpp
 
 obj/qrc_res.o: qrc_res.cpp 

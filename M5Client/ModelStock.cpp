@@ -38,3 +38,31 @@ void ModelStock::appendData(QString sHeadName,QVector<QVariant> list)
 
     endResetModel();
 }
+
+void ModelStock::toNext()
+{
+    beginResetModel();
+
+    m_verticalHeaderData.append( m_verticalHeaderData.last());
+    m_verticalHeaderData.pop_front();
+
+    QVector<QVariant> row;
+    row.append(m_rows.last().at(VALUE_OBJ_STOCK::_close));
+    row.append(m_rows.last().at(VALUE_OBJ_STOCK::_close));
+    row.append(m_rows.last().at(VALUE_OBJ_STOCK::_close));
+    row.append(m_rows.last().at(VALUE_OBJ_STOCK::_close));
+    m_rows.append(row);
+    m_rows.pop_front();
+
+    endResetModel();
+}
+
+void ModelStock::reflash(QString sHeadName, QVector<QVariant> list)
+{
+    beginResetModel();
+    list[VALUE_OBJ_STOCK::_open]=m_rows.last().at(VALUE_OBJ_STOCK::_open);
+    m_verticalHeaderData.last()= sHeadName ;
+    m_rows.last()= list;
+
+    endResetModel();
+}

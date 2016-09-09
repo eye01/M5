@@ -11,7 +11,7 @@ class TestTick : public ListenTick
 public:
     explicit TestTick(QObject *parent = 0);
     int setBindingKey(QString sType, QStringList argv, int iLoopMSec =3000);
-    void close(){}
+    void close(){m_bIsRun=false;}
 private:
 
 

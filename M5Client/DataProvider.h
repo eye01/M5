@@ -8,7 +8,9 @@
 #include "ListenTick.h"
 #include "TestTick.h"
 #include "CDefine.h"
+#include "CKLineData.h"
 #include <QTimerEvent>
+#include <QTime>
 
 class DataProvider : public QObject
 {
@@ -22,27 +24,24 @@ public:
 
     int iKtimer;
 
-    void startMq(MQ_TYPE type,QStringList argv,int iMsec=1000);
-
-    void stopMq();
 
 
 
 
 
-#if TEST_TICK
-    TestTick *m_listen;
-#else
-    ListenTick *m_listen;
-#endif
+
+
 
 
 private:
-    void timerEvent(QTimerEvent *);
+  //  void timerEvent(QTimerEvent *);
 signals:
-
+public:
+    void reflash(CKLineData *data);
+    void toNext();
 public slots:
-    void slotTick(QString sTick);
+
+
 };
 
 #endif // DATAPROVIDER_H

@@ -28,7 +28,7 @@ class Ui_StageChart
 {
 public:
     QGridLayout *gridLayout;
-    LayerTopMenu *widget_3;
+    LayerTopMenu *wTopMenu;
     LayerBarDiagram *layerBar;
     LayerStock *layerStock;
     QWidget *widget_4;
@@ -52,12 +52,12 @@ public:
         gridLayout = new QGridLayout(StageChart);
         gridLayout->setSpacing(0);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        widget_3 = new LayerTopMenu(StageChart);
-        widget_3->setObjectName(QStringLiteral("widget_3"));
-        widget_3->setMinimumSize(QSize(0, 120));
-        widget_3->setMaximumSize(QSize(16777215, 120));
+        wTopMenu = new LayerTopMenu(StageChart);
+        wTopMenu->setObjectName(QStringLiteral("wTopMenu"));
+        wTopMenu->setMinimumSize(QSize(0, 80));
+        wTopMenu->setMaximumSize(QSize(16777215, 120));
 
-        gridLayout->addWidget(widget_3, 0, 0, 1, 1);
+        gridLayout->addWidget(wTopMenu, 0, 0, 1, 1);
 
         layerBar = new LayerBarDiagram(StageChart);
         layerBar->setObjectName(QStringLiteral("layerBar"));

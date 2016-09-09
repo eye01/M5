@@ -99,19 +99,19 @@
           <rect>
            <x>120</x>
            <y>50</y>
-           <width>200</width>
+           <width>220</width>
            <height>43</height>
           </rect>
          </property>
          <property name="minimumSize">
           <size>
-           <width>180</width>
+           <width>220</width>
            <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>200</width>
+           <width>220</width>
            <height>16777215</height>
           </size>
          </property>
@@ -121,7 +121,7 @@
           </font>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="page">
           <layout class="QHBoxLayout" name="horizontalLayout">
@@ -141,16 +141,16 @@
             <number>0</number>
            </property>
            <item>
-            <widget class="QComboBox" name="comboBox">
+            <widget class="QComboBox" name="cbStockType">
              <property name="minimumSize">
               <size>
-               <width>75</width>
+               <width>105</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>100</width>
+               <width>105</width>
                <height>16777215</height>
               </size>
              </property>
@@ -161,38 +161,48 @@
              </property>
              <item>
               <property name="text">
-               <string>上市</string>
+               <string>上市股票</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>上櫃</string>
+               <string>上櫃股票</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>興櫃</string>
+               <string>興櫃股票</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>上市權證</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>上櫃權證</string>
               </property>
              </item>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit">
+            <widget class="QLineEdit" name="txtId">
              <property name="minimumSize">
               <size>
-               <width>100</width>
+               <width>90</width>
                <height>0</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>200</width>
+               <width>90</width>
                <height>16777215</height>
               </size>
              </property>
              <property name="font">
               <font>
-               <pointsize>14</pointsize>
+               <pointsize>12</pointsize>
               </font>
              </property>
              <property name="placeholderText">
@@ -205,13 +215,13 @@
          <widget class="QWidget" name="page_2">
           <layout class="QGridLayout" name="gridLayout_2">
            <property name="leftMargin">
-            <number>0</number>
+            <number>5</number>
            </property>
            <property name="topMargin">
             <number>0</number>
            </property>
            <property name="rightMargin">
-            <number>0</number>
+            <number>5</number>
            </property>
            <property name="bottomMargin">
             <number>0</number>
@@ -223,7 +233,7 @@
             <number>0</number>
            </property>
            <item row="0" column="0">
-            <widget class="QComboBox" name="comboBox_2">
+            <widget class="QComboBox" name="cbTaifexType">
              <property name="font">
               <font>
                <pointsize>14</pointsize>
@@ -242,7 +252,7 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QComboBox" name="comboBox_3">
+            <widget class="QComboBox" name="cbTaifexId">
              <property name="font">
               <font>
                <pointsize>14</pointsize>
@@ -311,6 +321,9 @@
              <property name="checkable">
               <bool>true</bool>
              </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
             </widget>
            </item>
            <item row="0" column="1">
@@ -331,6 +344,9 @@
              </property>
              <property name="checkable">
               <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
              </property>
             </widget>
            </item>
