@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QDebug>
 
-#include "CStreamData.h"
 
 
 //外部要呼叫統一使用define的，design patten : singleton 
@@ -30,7 +29,6 @@ public:
 
 
 
-    CStreamData m_data;
 private:
     Global();
     static Global* m_pInstance;

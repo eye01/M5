@@ -22,23 +22,13 @@ public:
 
     ModelBarDiagram *m_modelBarDiagram;
 
-    int iKtimer;
-
-
-
-
-
-
-
-
-
 
 private:
   //  void timerEvent(QTimerEvent *);
 signals:
 public:
     void reflash(CKLineData *data);
-    void toNext();
+    void appendData(CKLineData *data);
 public slots:
 
 

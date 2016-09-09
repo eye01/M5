@@ -11,11 +11,13 @@ class CKLineData : public QObject
 public:
     explicit CKLineData(QObject *parent = 0);
         //   開盤、最高、最低、收盤
-    void init();
+    CKLineData *init();
 
     void setCost(QString sCost);
 
     void setNums(QString sNums);
+
+    void setTime(QString sTime);
     QVector<QVariant> stockData()
     {
         QVector<QVariant> re;
@@ -41,6 +43,7 @@ public:
     float m_iOpen;
     float m_iClose;
     int m_iNums;
+    QString m_sTime;
 signals:
 
 public slots:

@@ -21,7 +21,7 @@ public:
     explicit ModelBarDiagram(QObject *parent = 0);
 
     void appendData(QString sHeadName,QVector<QVariant> list);
-    void toNext();
+
     void reflash(QString sHeadName, QVector<QVariant> list);
 
 signals:

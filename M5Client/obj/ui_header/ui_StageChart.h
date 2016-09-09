@@ -48,7 +48,8 @@ public:
     {
         if (StageChart->objectName().isEmpty())
             StageChart->setObjectName(QStringLiteral("StageChart"));
-        StageChart->resize(599, 420);
+        StageChart->resize(800, 600);
+        StageChart->setMinimumSize(QSize(800, 600));
         gridLayout = new QGridLayout(StageChart);
         gridLayout->setSpacing(0);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));

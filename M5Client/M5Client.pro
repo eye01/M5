@@ -55,7 +55,6 @@ SOURCES += main.cpp\
     DataProvider.cpp \
     ModelBarDiagram.cpp \
     LayerTopMenu.cpp \
-    CStreamData.cpp \
     CKLineData.cpp
 
 HEADERS  += widget.h \
@@ -70,7 +69,6 @@ HEADERS  += widget.h \
     DataProvider.h \
     ModelBarDiagram.h \
     LayerTopMenu.h \
-    CStreamData.h \
     CDefine.h \
     CKLineData.h
 

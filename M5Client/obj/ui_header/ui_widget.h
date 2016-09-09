@@ -34,7 +34,7 @@ public:
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QStringLiteral("Widget"));
-        Widget->resize(892, 600);
+        Widget->resize(1024, 768);
         Widget->setMinimumSize(QSize(800, 600));
         gridLayout = new QGridLayout(Widget);
         gridLayout->setSpacing(6);

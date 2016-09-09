@@ -58,11 +58,15 @@ void LayerStock::initUi()
     ruler.setTickMarkPen( QColor(Qt::black) ); //設定刻度顏色 黑色
     ruler.setShowRulerLine(true);
     m_rightAxis->setRulerAttributes( ruler );
+    TextAttributes attributesR;
+    attributesR=m_rightAxis->textAttributes();
+    attributesR.setFontSize( Measure( 10.0, KDChartEnums::MeasureCalculationModeAbsolute ));
+    m_rightAxis->setTextAttributes(attributesR);
 
     TextAttributes attributes = m_bottomAxis->textAttributes();
 
     attributes.setRotation( 90 );
-    attributes.setFontSize( Measure( 7.0, KDChartEnums::MeasureCalculationModeAbsolute ) );
+    attributes.setFontSize( Measure( 10.0, KDChartEnums::MeasureCalculationModeAbsolute ) );
     m_bottomAxis->setTextAttributes( attributes );
     m_bottomAxis->setPosition( CartesianAxis::Bottom );
     m_diagram.addAxis( m_rightAxis );

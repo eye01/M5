@@ -2,24 +2,24 @@
 #include "ui_StageChart.h"
 
 StageChart::StageChart(QWidget *parent) :
-    QWidget(parent),
+    QWidget(parent),m_listen(NULL),
     ui(new Ui::StageChart)
 {
     ui->setupUi(this);
-       m_listen=NULL;
-        m_kData=new CKLineData(this);
+    m_cCtrl.iKLine=-1;
+    m_kData=new CKLineData(this);
 
     m_data.m_modelStock=&ui->layerStock->m_cModel;
 
     m_data.m_modelBarDiagram=&ui->layerBar->m_cModel;
 
     QObject::startTimer(1000);
-    m_miSec=0;
+
 
     ui->wTopMenu->connect(ui->wTopMenu,SIGNAL(signalSelect(MENU_SELECT)),this,SLOT(slotTopMenu(MENU_SELECT)));
-//    m_data.startMq(_stock,QStringList()<<"tse.*"<<"otc.*"<<"emg.*");
+    //    m_data.startMq(_stock,QStringList()<<"tse.*"<<"otc.*"<<"emg.*");
 
-  //  startMq(_stock,QStringList()<<"tse.1477",100);
+    //  startMq(_stock,QStringList()<<"tse.1477",100);
 }
 
 StageChart::~StageChart()
@@ -29,12 +29,20 @@ StageChart::~StageChart()
 
 void StageChart::timerEvent(QTimerEvent *event)
 {
-    m_miSec++;
-    if(m_miSec>=m_cCtrl.iKLine)
+    if(m_cCtrl.iKLine==-1)
+        return;
+
+    if(m_cCtrl.iKLine==1)
     {
-        m_miSec=0;
-        m_data.toNext();
-        qDebug()<<"next Kline";
+        m_iMsec=0;
+        return;
+    }
+    m_iMsec++;
+    if(m_iMsec>=m_cCtrl.iKLine)
+    {
+        m_iMsec=0;
+        m_data.appendData(m_kData->init());
+        // m_kData->init();
     }
 }
 
@@ -59,7 +67,7 @@ void StageChart::slotTopMenu(MENU_SELECT menu)
 
 void StageChart::startMq(MQ_TYPE type, QStringList argv, int iMsec)
 {
-    m_miSec=0;
+    m_iMsec=0;
     if(m_listen==NULL)
     {
 #if TEST_TICK
@@ -84,16 +92,16 @@ void StageChart::stopMq()
 {
     if(m_listen==NULL)
         return;
-//    m_listen->close();
-//    m_listen->disconnect();
-//    m_listen->quit();
-//    m_listen->wait(5000);
-//    m_listen->deleteLater();
+    //    m_listen->close();
+    //    m_listen->disconnect();
+    //    m_listen->quit();
+    //    m_listen->wait(5000);
+    //    m_listen->deleteLater();
     m_listen->close();
     m_listen->exit(0);
-while (m_listen->isFinished() == false);
- qDebug() << "delete thread";
- delete m_listen;
+    while (m_listen->isFinished() == false);
+    qDebug() << "delete thread";
+    delete m_listen;
 
     m_listen=NULL;
 
@@ -102,24 +110,32 @@ while (m_listen->isFinished() == false);
 void StageChart::slotTick(QString sTick)
 {
 
-        QStringList listTick=sTick.split(" ");
+    QStringList listTick=sTick.split(" ");
     qDebug()<<sTick;
     if(listTick.length()<5 || listTick.at(4)=="0")
         return;
 
     if(m_cCtrl.sId=="*" || m_cCtrl.sId==listTick.at(0) )
     {
-    m_kData->setCost(listTick.at(3));
-    m_kData->setNums(listTick.at(4));
-    m_data.reflash(m_kData);
+        m_kData->setCost(listTick.at(3));
+        m_kData->setNums(listTick.at(4));
+        m_kData->setTime(listTick.at(1));
+        m_data.reflash(m_kData);
+
+        ui->lbId->setText(listTick.at(0));
+        ui->lbOpen->setText(QString::number(m_kData->m_iOpen));
+        ui->lbMax->setText(QString::number(m_kData->m_iMax));
+        ui->lbMin->setText(QString::number(m_kData->m_iMin));
+        ui->lbClose->setText(QString::number(m_kData->m_iClose));
+
+        if(m_cCtrl.iKLine==1)
+        {
+            m_data.appendData(m_kData->init());
+        }
     }
 
 
-    ui->lbId->setText(listTick.at(0));
-    ui->lbOpen->setText(QString::number(m_kData->m_iOpen));
-     ui->lbMax->setText(QString::number(m_kData->m_iMax));
-    ui->lbMin->setText(QString::number(m_kData->m_iMin));
-    ui->lbClose->setText(QString::number(m_kData->m_iClose));
+
 }
 
 

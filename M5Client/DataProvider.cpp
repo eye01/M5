@@ -43,17 +43,18 @@ DataProvider::DataProvider(QObject *parent) : QObject(parent)
 
 void DataProvider::reflash(CKLineData *data)
 {
-    QString sHead=QTime::currentTime().toString("HH:mm:ss");
-    m_modelStock->reflash(sHead,data->stockData());
-    m_modelBarDiagram->reflash(QString(data->m_iNums),data->barData());
+  //  QString sHead=QTime::currentTime().toString("HH:mm:ss");
+    m_modelStock->reflash(data->m_sTime,data->stockData());
+
+    m_modelBarDiagram->reflash(QString::number(data->m_iNums),data->barData());
+
 }
 
-void DataProvider::toNext()
+void DataProvider::appendData(CKLineData *data)
 {
-
    // QString sHead=QTime::currentTime().toString("HH:mm:ss");
-    m_modelStock->toNext();
-    m_modelBarDiagram->toNext();
+    m_modelStock->appendData(data->m_sTime,data->stockData());
+    m_modelBarDiagram->appendData(QString(data->m_iNums),data->barData());
 }
 
 
