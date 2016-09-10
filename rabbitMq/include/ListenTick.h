@@ -49,18 +49,21 @@ public:
      * @param argv
      * @return
      */
-    int startListen(char const *exchange,QStringList argv);
+  //  int startListen(char const *exchange,QStringList argv);
 
 
 
     int setBindingKey(QString sType, QStringList argv, int iLoopMSec=500);
 
+    int resetBindingKey(QString sType, QStringList argv, int iLoopMSec=500);
+
     void close();
+     bool m_bIsRun;
 protected:
 
     bool m_bIsOpen;
 
-    bool m_bIsRun;
+     char const *m_currentBindingKey;
 
     int m_iLoopMSec;
 

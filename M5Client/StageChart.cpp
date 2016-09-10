@@ -6,6 +6,9 @@ StageChart::StageChart(QWidget *parent) :
     ui(new Ui::StageChart)
 {
     ui->setupUi(this);
+
+    iTest=-1;
+
     m_cCtrl.iKLine=-1;
     m_kData=new CKLineData(this);
 
@@ -17,13 +20,14 @@ StageChart::StageChart(QWidget *parent) :
 
 
     ui->wTopMenu->connect(ui->wTopMenu,SIGNAL(signalSelect(MENU_SELECT)),this,SLOT(slotTopMenu(MENU_SELECT)));
-    //    m_data.startMq(_stock,QStringList()<<"tse.*"<<"otc.*"<<"emg.*");
+     //m_data.startMq(_stock,QStringList()<<"tse.*"<<"otc.*"<<"emg.*");
 
     //  startMq(_stock,QStringList()<<"tse.1477",100);
 }
 
 StageChart::~StageChart()
 {
+    stopMq();
     delete ui;
 }
 
@@ -48,9 +52,16 @@ void StageChart::timerEvent(QTimerEvent *event)
 
 void StageChart::slotTopMenu(MENU_SELECT menu)
 {
+    qDebug()<<"top ";
+//    if(m_cCtrl.sType==menu.sType)
+//    {
+//        m_cCtrl=menu;
+//        return;
+//    }
+
     m_cCtrl=menu;
 
-    stopMq();
+
 
     MQ_TYPE type;
     type=_taifex;
@@ -60,6 +71,7 @@ void StageChart::slotTopMenu(MENU_SELECT menu)
 
     QString sArg="%1.%2";
 
+    stopMq();
     startMq(type,QStringList()<<sArg.arg(menu.sType).arg(QString(menu.sId)),500);
 
 }
@@ -67,7 +79,14 @@ void StageChart::slotTopMenu(MENU_SELECT menu)
 
 void StageChart::startMq(MQ_TYPE type, QStringList argv, int iMsec)
 {
+
     m_iMsec=0;
+
+    QString sType="taifex";
+
+    if(type==_stock)
+        sType="stock";
+
     if(m_listen==NULL)
     {
 #if TEST_TICK
@@ -76,34 +95,36 @@ void StageChart::startMq(MQ_TYPE type, QStringList argv, int iMsec)
 #else
         m_listen=new ListenTick(this);
 #endif
+
+
+
         m_listen->connect(m_listen,SIGNAL(signalTick(QString)),this,SLOT(slotTick(QString)));
+
+        m_listen->setBindingKey(sType,argv,iMsec);
+
+        m_listen->start();
+        iTest=0;
+
 
     }
 
-    QString sType="taifex";
 
-    if(type==_stock)
-        sType="stock";
-    m_listen->setBindingKey(sType,argv,iMsec);
-    m_listen->start();
 }
 
 void StageChart::stopMq()
 {
     if(m_listen==NULL)
         return;
-    //    m_listen->close();
-    //    m_listen->disconnect();
-    //    m_listen->quit();
-    //    m_listen->wait(5000);
-    //    m_listen->deleteLater();
+
+    m_listen->m_bIsRun=false;
     m_listen->close();
     m_listen->exit(0);
     while (m_listen->isFinished() == false);
     qDebug() << "delete thread";
-    delete m_listen;
-
+    m_listen->deleteLater();
     m_listen=NULL;
+
+
 
 }
 

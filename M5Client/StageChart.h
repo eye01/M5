@@ -37,6 +37,8 @@ public:
 
     MENU_SELECT m_cCtrl;
 
+    int iTest;
+
 private:
     Ui::StageChart *ui;
     void timerEvent(QTimerEvent *event);

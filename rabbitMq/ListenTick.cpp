@@ -10,8 +10,8 @@ ListenTick::ListenTick(QObject *parent) : QThread(parent),m_bIsOpen(false),m_bIs
 
 ListenTick::~ListenTick()
 {
-    qDebug()<<"mq close";
-    close();
+    //qDebug()<<"mq close";
+
 }
 
 int ListenTick::open()
@@ -60,6 +60,8 @@ int ListenTick::open()
 
 int ListenTick::setBindingKey(QString sType, QStringList argv, int iLoopMSec)
 {
+
+    qDebug()<<"set key "<<argv;
     if(!m_bIsOpen)
         open();
 
@@ -67,30 +69,95 @@ int ListenTick::setBindingKey(QString sType, QStringList argv, int iLoopMSec)
     char const *exchange="stock";
 
 
-        exchange=sType.toStdString().c_str();
+
+    exchange=sType.toStdString().c_str();
     m_iLoopMSec=iLoopMSec;
 
     int iRe=0;
 
     {
 
-        for (int i = 0; i < argv.length(); i++)
-        {
-            const char  *bindingkey = QString(argv.at(i)).toStdString().c_str();
-            amqp_queue_bind(m_conn, 1, m_queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(bindingkey),
-                            amqp_empty_table);
-            die_on_amqp_error(amqp_get_rpc_reply(m_conn), "Binding queue");
-        }
+//        for (int i = 0; i < argv.length(); i++)
+//        {
+//            const char  *bindingkey = QString(argv.at(i)).toStdString().c_str();
+//            amqp_queue_bind(m_conn, 1, m_queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(bindingkey),
+//                            amqp_empty_table);
+//            die_on_amqp_error(amqp_get_rpc_reply(m_conn), "Binding queue");
+//        }
+          QString tmp=QString(argv.at(0)).split(".").at(0)+".*";
+          char const *tmp2=tmp.toStdString().c_str();
+          char const *tmp3=QString(argv.at(0)).toStdString().c_str();
+
+         char const *bindingkey =tmp2;
+        amqp_queue_bind(m_conn, 1, m_queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(bindingkey),
+                        amqp_empty_table);
+
+        m_currentBindingKey=bindingkey;
+        die_on_amqp_error(amqp_get_rpc_reply(m_conn), "Binding queue");
 
     }
 
-
+     this->msleep(1000);
     amqp_basic_consume(m_conn, 1, m_queuename, amqp_empty_bytes, 0, 1, 0, amqp_empty_table);
 
-    die_on_amqp_error(amqp_get_rpc_reply(m_conn), "Consuming");
+
+  //  die_on_amqp_error(amqp_get_rpc_reply(m_conn), "Consuming");
 
     m_bIsRun=true;
     return iRe;
+}
+
+int ListenTick::resetBindingKey(QString sType, QStringList argv, int iLoopMSec)
+{
+
+
+        qDebug()<<"reset key "<<argv;
+        if(!m_bIsOpen)
+            open();
+
+        m_bIsRun=false;
+        char const *exchange="stock";
+
+
+
+        exchange=sType.toStdString().c_str();
+        m_iLoopMSec=iLoopMSec;
+
+        int iRe=0;
+
+        {
+
+    //        for (int i = 0; i < argv.length(); i++)
+    //        {
+    //            const char  *bindingkey = QString(argv.at(i)).toStdString().c_str();
+    //            amqp_queue_bind(m_conn, 1, m_queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(bindingkey),
+    //                            amqp_empty_table);
+    //            die_on_amqp_error(amqp_get_rpc_reply(m_conn), "Binding queue");
+    //        }
+              QString tmp=QString(argv.at(0)).split(".").at(0)+".*";
+              char const *tmp2=tmp.toStdString().c_str();
+              char const *tmp3=QString(argv.at(0)).toStdString().c_str();
+
+             char const *bindingkey =tmp2;
+             amqp_queue_unbind(m_conn, 1, m_queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(m_currentBindingKey),
+                               amqp_empty_table);
+            amqp_queue_bind(m_conn, 1, m_queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(bindingkey),
+                            amqp_empty_table);
+
+            m_currentBindingKey=bindingkey;
+            die_on_amqp_error(amqp_get_rpc_reply(m_conn), "Binding queue");
+
+        }
+
+
+        amqp_basic_consume(m_conn, 1, m_queuename, amqp_empty_bytes, 0, 1, 0, amqp_empty_table);
+
+
+      //  die_on_amqp_error(amqp_get_rpc_reply(m_conn), "Consuming");
+          qDebug()<<"AAA2";
+        m_bIsRun=true;
+        return iRe;
+
 }
 
 
@@ -152,172 +219,172 @@ void ListenTick::close()
     if(!m_bIsOpen)
         return;
 
+    m_bIsRun=false;
+
     qDebug()<<"mq close";
     die_on_amqp_error(amqp_channel_close(m_conn, 1, AMQP_REPLY_SUCCESS), "Closing channel");
     die_on_amqp_error(amqp_connection_close(m_conn, AMQP_REPLY_SUCCESS), "Closing connection");
     die_on_error(amqp_destroy_connection(m_conn), "Ending connection");
+    msleep(1000);
 
-
-    m_bIsOpen=false;
 }
 
-int ListenTick::startListen(char const *exchange,QStringList argv)
-{
+//int ListenTick::startListen(char const *exchange,QStringList argv)
+//{
 
 
-    char const *hostname="60.251.126.94";
-    int port=5672;
-    int status;
+//    char const *hostname="60.251.126.94";
+//    int port=5672;
+//    int status;
 
-    amqp_socket_t *socket = NULL;
-    amqp_connection_state_t conn;
+//    amqp_socket_t *socket = NULL;
+//    amqp_connection_state_t conn;
 
-    amqp_bytes_t queuename;
+//    amqp_bytes_t queuename;
 
-    if (4+argv.length() < 5) {
-        fprintf(stderr, "Usage: amqp_listen host port exchange bindingkey\n");
-        return 1;
-    }
+//    if (4+argv.length() < 5) {
+//        fprintf(stderr, "Usage: amqp_listen host port exchange bindingkey\n");
+//        return 1;
+//    }
 
-    //     hostname = m_argv[1];
-    //     port = atoi(m_argv[2]);
-    // exchange = m_argv[3];
+//    //     hostname = m_argv[1];
+//    //     port = atoi(m_argv[2]);
+//    // exchange = m_argv[3];
 
-    conn = amqp_new_connection();
+//    conn = amqp_new_connection();
 
-    socket = amqp_tcp_socket_new(conn);
-    if (!socket)
-    {
-        die("creating TCP socket");
-    }
+//    socket = amqp_tcp_socket_new(conn);
+//    if (!socket)
+//    {
+//        die("creating TCP socket");
+//    }
 
-    status = amqp_socket_open(socket, hostname, port);
-    if (status)
-    {
-        die("opening TCP socket");
-    }
+//    status = amqp_socket_open(socket, hostname, port);
+//    if (status)
+//    {
+//        die("opening TCP socket");
+//    }
 
-    die_on_amqp_error(amqp_login(conn, "tw", 0, 16384, 60, AMQP_SASL_METHOD_PLAIN,
-                                 "user1", "user1.stock"),
-                      "Logging in");
-    amqp_channel_open(conn, 1);
-    die_on_amqp_error(amqp_get_rpc_reply(conn), "Opening channel");
+//    die_on_amqp_error(amqp_login(conn, "tw", 0, 16384, 60, AMQP_SASL_METHOD_PLAIN,
+//                                 "user1", "user1.stock"),
+//                      "Logging in");
+//    amqp_channel_open(conn, 1);
+//    die_on_amqp_error(amqp_get_rpc_reply(conn), "Opening channel");
 
-    {
-        amqp_queue_declare_ok_t *r = amqp_queue_declare(conn, 1, amqp_empty_bytes, 0, 0, 0, 1,
-                                                        amqp_empty_table);
-        die_on_amqp_error(amqp_get_rpc_reply(conn), "Declaring queue");
-        queuename = amqp_bytes_malloc_dup(r->queue);
-        if (queuename.bytes == NULL)
-        {
-            fprintf(stderr, "Out of memory while copying queue name");
-            return 1;
-        }
-    }
-
-
-    {
-        int i;
-        for (i = 0; i < argv.length(); i++)
-        {
-            const char  *bindingkey = QString(argv.at(i)).toStdString().c_str();
-            amqp_queue_bind(conn, 1, queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(bindingkey),
-                            amqp_empty_table);
-            die_on_amqp_error(amqp_get_rpc_reply(conn), "Binding queue");
-        }
-    }
-
-    amqp_basic_consume(conn, 1, queuename, amqp_empty_bytes, 0, 1, 0, amqp_empty_table);
-    die_on_amqp_error(amqp_get_rpc_reply(conn), "Consuming");
-
-    {
-        //       for(;;)
-        //       {
-        //         amqp_rpc_reply_t res;
-        //         amqp_envelope_t envelope;
-
-        //         amqp_maybe_release_buffers(conn);
-
-        //         res = amqp_consume_message(conn, &envelope, NULL, 0);
-
-        //         if (AMQP_RESPONSE_NORMAL != res.reply_type)
-        //         {
-        //           break;
-        //         }
+//    {
+//        amqp_queue_declare_ok_t *r = amqp_queue_declare(conn, 1, amqp_empty_bytes, 0, 0, 0, 1,
+//                                                        amqp_empty_table);
+//        die_on_amqp_error(amqp_get_rpc_reply(conn), "Declaring queue");
+//        queuename = amqp_bytes_malloc_dup(r->queue);
+//        if (queuename.bytes == NULL)
+//        {
+//            fprintf(stderr, "Out of memory while copying queue name");
+//            return 1;
+//        }
+//    }
 
 
-        struct timeval timeout;     /* <sys/time.h> */
-        timeout.tv_sec = 0;
-        timeout.tv_usec = 1000;     /* 1/1000 seconds */
+//    {
+//        int i;
+//        for (i = 0; i < argv.length(); i++)
+//        {
+//            const char  *bindingkey = QString(argv.at(i)).toStdString().c_str();
+//            amqp_queue_bind(conn, 1, queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(bindingkey),
+//                            amqp_empty_table);
+//            die_on_amqp_error(amqp_get_rpc_reply(conn), "Binding queue");
+//        }
+//    }
 
-        while (1)
-        {      /* global or shared variable */
-            amqp_rpc_reply_t res;
-            amqp_envelope_t envelope;
-            amqp_maybe_release_buffers(conn);
+//    amqp_basic_consume(conn, 1, queuename, amqp_empty_bytes, 0, 1, 0, amqp_empty_table);
+//    die_on_amqp_error(amqp_get_rpc_reply(conn), "Consuming");
 
-            res = amqp_consume_message(conn, &envelope, &timeout, 0);
-            if (AMQP_RESPONSE_NORMAL != res.reply_type) {
-                if (AMQP_STATUS_TIMEOUT == res.library_error) {
-                    continue;             /* no message */
-                }
-                break;
-            }
+//    {
+//        //       for(;;)
+//        //       {
+//        //         amqp_rpc_reply_t res;
+//        //         amqp_envelope_t envelope;
 
+//        //         amqp_maybe_release_buffers(conn);
 
+//        //         res = amqp_consume_message(conn, &envelope, NULL, 0);
 
-            /* ------------------------------------------------------------------ */
-            /* 請將主要處理程式碼放在這個區塊, 以下只是範例, 將收到資料列印出來 */
-
-            /* *-/
-         printf("Delivery %u, exchange %.*s routingkey %.*s\n",
-                (unsigned) envelope.delivery_tag,
-                (int) envelope.exchange.len, (char *) envelope.exchange.bytes,
-                (int) envelope.routing_key.len, (char *) envelope.routing_key.bytes);
-
-         if (envelope.message.properties._flags & AMQP_BASIC_CONTENT_TYPE_FLAG) {
-           printf("Content-type: %.*s\n",
-                  (int) envelope.message.properties.content_type.len,
-                  (char *) envelope.message.properties.content_type.bytes);
-         }
-         printf("----\n");
-
-         amqp_dump(envelope.message.body.bytes, envelope.message.body.len);
-   //--*/
-
-            printf("%.*s\n", (int)envelope.message.body.len, (char *)envelope.message.body.bytes);
-            fflush(stdout);
-
-            QString st((char *)envelope.message.body.bytes);
-            emit signalTick(st);
-
-            /* *-/
-         if ((unsigned) envelope.delivery_tag % 1000 == 0) {
-           fprintf(stderr, "Got %u messages\n", envelope.delivery_tag);
-         }
-   //--*/
-
-            /* ------------------------------------------------------------------ */
-
-            amqp_destroy_envelope(&envelope);
+//        //         if (AMQP_RESPONSE_NORMAL != res.reply_type)
+//        //         {
+//        //           break;
+//        //         }
 
 
-        }
-    }
+//        struct timeval timeout;     /* <sys/time.h> */
+//        timeout.tv_sec = 0;
+//        timeout.tv_usec = 1000;     /* 1/1000 seconds */
 
-    die_on_amqp_error(amqp_channel_close(conn, 1, AMQP_REPLY_SUCCESS), "Closing channel");
-    die_on_amqp_error(amqp_connection_close(conn, AMQP_REPLY_SUCCESS), "Closing connection");
-    die_on_error(amqp_destroy_connection(conn), "Ending connection");
+//        while (1)
+//        {      /* global or shared variable */
+//            amqp_rpc_reply_t res;
+//            amqp_envelope_t envelope;
+//            amqp_maybe_release_buffers(conn);
 
-    return 0;
-}
+//            res = amqp_consume_message(conn, &envelope, &timeout, 0);
+//            if (AMQP_RESPONSE_NORMAL != res.reply_type) {
+//                if (AMQP_STATUS_TIMEOUT == res.library_error) {
+//                    continue;             /* no message */
+//                }
+//                break;
+//            }
+
+
+
+//            /* ------------------------------------------------------------------ */
+//            /* 請將主要處理程式碼放在這個區塊, 以下只是範例, 將收到資料列印出來 */
+
+//            /* *-/
+//         printf("Delivery %u, exchange %.*s routingkey %.*s\n",
+//                (unsigned) envelope.delivery_tag,
+//                (int) envelope.exchange.len, (char *) envelope.exchange.bytes,
+//                (int) envelope.routing_key.len, (char *) envelope.routing_key.bytes);
+
+//         if (envelope.message.properties._flags & AMQP_BASIC_CONTENT_TYPE_FLAG) {
+//           printf("Content-type: %.*s\n",
+//                  (int) envelope.message.properties.content_type.len,
+//                  (char *) envelope.message.properties.content_type.bytes);
+//         }
+//         printf("----\n");
+
+//         amqp_dump(envelope.message.body.bytes, envelope.message.body.len);
+//   //--*/
+
+//            printf("%.*s\n", (int)envelope.message.body.len, (char *)envelope.message.body.bytes);
+//            fflush(stdout);
+
+//            QString st((char *)envelope.message.body.bytes);
+//            emit signalTick(st);
+
+//            /* *-/
+//         if ((unsigned) envelope.delivery_tag % 1000 == 0) {
+//           fprintf(stderr, "Got %u messages\n", envelope.delivery_tag);
+//         }
+//   //--*/
+
+//            /* ------------------------------------------------------------------ */
+
+//            amqp_destroy_envelope(&envelope);
+
+
+//        }
+//    }
+
+//    die_on_amqp_error(amqp_channel_close(conn, 1, AMQP_REPLY_SUCCESS), "Closing channel");
+//    die_on_amqp_error(amqp_connection_close(conn, AMQP_REPLY_SUCCESS), "Closing connection");
+//    die_on_error(amqp_destroy_connection(conn), "Ending connection");
+
+//    return 0;
+//}
 
 void ListenTick::run()
 {
-    while(1)
+    while(m_bIsRun)
     {
 
-        if(m_bIsRun)
             loopListen();
 
             msleep(m_iLoopMSec);

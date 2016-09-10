@@ -4,7 +4,7 @@ CKLineData::CKLineData(QObject *parent) : QObject(parent)
 {
     m_iMax=-1;
     m_iMin=99999;
-    m_iOpen=-1;
+    m_iOpen=0;
     m_iClose=-1;
     m_iNums=0;
 }
@@ -40,7 +40,7 @@ void CKLineData::setCost(QString sCost)
     if(iCurrent<m_iMin)
         m_iMin=iCurrent;
 
-    if(m_iOpen==-1)
+    if(m_iOpen==0)
         m_iOpen=iCurrent;
 
     m_iClose=iCurrent;
