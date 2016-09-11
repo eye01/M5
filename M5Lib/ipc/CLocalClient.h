@@ -12,7 +12,7 @@ class CLocalClient : public QObject
 public:
     explicit CLocalClient(QObject *parent = 0);
     QLocalSocket *m_socket;
-    int connectHost(QString sServerName,QByteArray arrInput,QByteArray &arrOutput,int iWaitTimer=1000);
+    int connectHost(QString sServerName,QByteArray arrInput,QByteArray &arrOutput,int iWaitTimer=300);
 
 signals:
     void signalLog(QString st);

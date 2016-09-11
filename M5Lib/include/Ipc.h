@@ -30,7 +30,7 @@ public:
      * @param iWaitTimer
      * @return
      */
-    int connectHost(QString sServerName,QByteArray arrInput, QByteArray &arrOutput, int iWaitTimer=10000);
+    int connectHost(QString sServerName,QByteArray arrInput, QByteArray &arrOutput, int iWaitTimer=300);
 
 
 

@@ -19,9 +19,9 @@ public:
 private:
         QLocalServer *m_server;
 
-        QLocalSocket *m_clientConnection;
+        QLocalSocket *m_clientConnection[300];
 
-
+        int m_iLink;
 
 signals:
         void signalLog(QString st);
@@ -30,7 +30,7 @@ signals:
 
 private slots:
         void slotAcceptConnection();
-        void slotReadClient();
+
 
 public slots:
         void slotRetrun(QByteArray arrReturn);

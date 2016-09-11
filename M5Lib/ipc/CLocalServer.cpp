@@ -4,7 +4,7 @@
 CLocalServer::CLocalServer(QObject *parent) :
     QThread(parent)
 {
-
+    m_iLink=0;
 
 }
 
@@ -18,7 +18,7 @@ void CLocalServer::run()
 void CLocalServer::startServer(QString sName)
 {
 
-    m_clientConnection=NULL;
+    //m_clientConnection=NULL;
 
     m_server = new QLocalServer(this);
 
@@ -58,44 +58,35 @@ void CLocalServer::slotAcceptConnection()
 
     emit signalLog("get client link");
 
-    if(m_clientConnection!=NULL)
+    //        if(m_clientConnection!=NULL)
+    //        {
+    //            m_clientConnection->abort();
+
+    //            m_clientConnection->disconnect();
+    //        }
+    m_iLink++;
+    m_clientConnection[m_iLink] = m_server->nextPendingConnection();
+    QByteArray arrRead;
+    while (true)
     {
-        m_clientConnection->abort();
+        if(m_clientConnection[m_iLink]->waitForReadyRead(300) == false)
+        {
+            break;
+        }
 
-        m_clientConnection->disconnect();
+        arrRead.append(m_clientConnection[m_iLink]->readAll());
+
     }
-
-    m_clientConnection = m_server->nextPendingConnection();
-
-    m_clientConnection->connect(m_clientConnection, SIGNAL(readyRead()), this, SLOT(slotReadClient()));
-
-}
-
-void CLocalServer::slotReadClient()
-{
-
-    QByteArray arrRead= m_clientConnection->readAll();
 
     QString str =arrRead;
 
     emit signalLog("read client : "+str);
 
     emit signalReadAll(arrRead);
-    //    QString sReClient;
-
-    //    emit signalLog(sReClient);
-
-    //    QByteArray tmp;
-
-    //    tmp.append(sReClient);
-
-    //    QTcpSocket *pSenderSocket = qobject_cast<QTcpSocket*>(sender());
-
-    //    pSenderSocket->write(tmp);
-
-        slotRetrun("RERE");
 
 }
+
+
 
 void CLocalServer::slotRetrun(QByteArray arrReturn)
 {

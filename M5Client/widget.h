@@ -17,6 +17,9 @@ public:
 
 private slots:
     void on_btn_clicked();
+public slots:
+    void slotLog(QByteArray st);
+
 
 private:
     Ui::Widget *ui;

@@ -7,6 +7,8 @@
 #include "ListenTick.h"
 #include "TestTick.h"
 #include "CKLineData.h"
+#include <QProcess>
+#include "M5Library.h"
 namespace Ui {
 class StageChart;
 }
@@ -32,8 +34,11 @@ public:
 
     void startMq(MQ_TYPE type, QStringList argv, int iMsec);
 
+    void startMq2(MQ_TYPE type, QStringList argv, int iMsec);
 
     void stopMq();
+
+
 
     MENU_SELECT m_cCtrl;
 
@@ -43,9 +48,10 @@ private:
     Ui::StageChart *ui;
     void timerEvent(QTimerEvent *);
     int m_iMsec;
+    QProcess *m_process;
 public slots:
     void slotTopMenu(MENU_SELECT menu);
-    void slotTick(QString sTick);
+    void slotTick(QByteArray bTick);
 };
 
 #endif // STAGECHART_H

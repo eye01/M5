@@ -8,7 +8,7 @@ StageChart::StageChart(QWidget *parent) :
     ui->setupUi(this);
 
     iTest=-1;
-
+    m_process=new QProcess(this);
     m_cCtrl.iKLine=-1;
     m_kData=new CKLineData(this);
 
@@ -18,9 +18,8 @@ StageChart::StageChart(QWidget *parent) :
 
     QObject::startTimer(1000);
 
-
     ui->wTopMenu->connect(ui->wTopMenu,SIGNAL(signalSelect(MENU_SELECT)),this,SLOT(slotTopMenu(MENU_SELECT)));
-     //m_data.startMq(_stock,QStringList()<<"tse.*"<<"otc.*"<<"emg.*");
+    //m_data.startMq(_stock,QStringList()<<"tse.*"<<"otc.*"<<"emg.*");
 
     //  startMq(_stock,QStringList()<<"tse.1477",100);
 }
@@ -53,11 +52,11 @@ void StageChart::timerEvent(QTimerEvent *)
 void StageChart::slotTopMenu(MENU_SELECT menu)
 {
     qDebug()<<"top ";
-//    if(m_cCtrl.sType==menu.sType)
-//    {
-//        m_cCtrl=menu;
-//        return;
-//    }
+    //    if(m_cCtrl.sType==menu.sType)
+    //    {
+    //        m_cCtrl=menu;
+    //        return;
+    //    }
 
     m_cCtrl=menu;
 
@@ -71,8 +70,8 @@ void StageChart::slotTopMenu(MENU_SELECT menu)
 
     QString sArg="%1.%2";
 
-    stopMq();
-    startMq(type,QStringList()<<sArg.arg(menu.sType).arg(QString(menu.sId)),500);
+    // stopMq();
+    startMq2(type,QStringList()<<sArg.arg(menu.sType).arg(QString(menu.sId)),500);
 
 }
 
@@ -128,9 +127,62 @@ void StageChart::stopMq()
 
 }
 
-void StageChart::slotTick(QString sTick)
+void StageChart::startMq2(MQ_TYPE type, QStringList argv, int iMsec)
 {
+    QString sType="taifex";
 
+    if(type==_stock)
+        sType="stock";
+
+
+    QString hostname="60.251.126.94";
+    QString port="5672";
+    argv.push_front(sType);
+    argv.push_front(port);
+    argv.push_front(hostname);
+
+
+    QString sName;
+    sName.append(argv[2]);
+    sName.append(argv[3]);
+    sName.append(QTime::currentTime().addMSecs(13).toString("zz"));
+
+    argv.push_back(sName);
+
+    qDebug()<<"sName: "<<sName;
+    //  m_process=new QProcess(this);
+    M5Lib().ipc()->runServer(sName);
+
+    connect(M5Lib().ipc(),SIGNAL(signalReadAll(QByteArray)),this,SLOT(slotTick(QByteArray)));
+
+    QStringList listArguments;
+    listArguments<<"192.168.0.113"<<"123"<<"stock"<<"tse.*";
+    qDebug()<<argv;
+
+//    if(m_process==NULL)
+//    {
+//        m_process->close();
+//        m_process->kill();
+
+//        m_process;
+//        m_process=new QProcess(this);
+
+//    }
+//    //m_process->kill();
+    m_process->start("./TickListenLinux",argv);
+//    qDebug()<<m_process->pid();
+    // m_process->deleteLater();
+
+//    QProcess pro;
+//    pro.start("./TickListenLinux",argv);
+
+}
+
+void StageChart::slotTick(QByteArray bTick)
+{
+    qDebug()<<"get tick; "<<bTick;
+    QString sTick;
+    sTick.append(bTick);
     QStringList listTick=sTick.split(" ");
     qDebug()<<sTick;
     if(listTick.length()<5 || listTick.at(4)=="0")

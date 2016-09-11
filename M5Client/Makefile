@@ -1718,6 +1718,18 @@ obj/moc_StageChart.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTime \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QProcess \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocess.h \
+		../M5Lib/include/M5Library.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/QSqlDatabase \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/qsqldatabase.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/qsql.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariantList \
+		../M5Lib/include/Network.h \
+		../M5Lib/include/DataBase.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMap \
+		../M5Lib/include/Ipc.h \
+		../M5Lib/include/Utility.h \
 		StageChart.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include StageChart.h -o obj/moc_StageChart.cpp
@@ -2623,7 +2635,19 @@ obj/ui_header/ui_widget.h: widget.ui \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTime \
-		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QProcess \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocess.h \
+		../M5Lib/include/M5Library.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/QSqlDatabase \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/qsqldatabase.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/qsql.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariantList \
+		../M5Lib/include/Network.h \
+		../M5Lib/include/DataBase.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMap \
+		../M5Lib/include/Ipc.h \
+		../M5Lib/include/Utility.h
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/uic widget.ui -o obj/ui_header/ui_widget.h
 
 obj/ui_header/ui_LayerStock.h: LayerStock.ui \
@@ -3503,7 +3527,21 @@ obj/widget.o: widget.cpp widget.h \
 		Global.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
-		obj/ui_header/ui_widget.h
+		obj/ui_header/ui_widget.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QProcess \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocess.h \
+		../M5Lib/include/M5Library.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/QSqlDatabase \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/qsqldatabase.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/qsql.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariantList \
+		../M5Lib/include/Network.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
+		../M5Lib/include/DataBase.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMap \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
+		../M5Lib/include/Ipc.h \
+		../M5Lib/include/Utility.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/widget.o widget.cpp
 
 obj/LayerStock.o: LayerStock.cpp LayerStock.h \
@@ -3986,6 +4024,18 @@ obj/StageChart.o: StageChart.cpp StageChart.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimerEvent \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTime \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QProcess \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocess.h \
+		../M5Lib/include/M5Library.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/QSqlDatabase \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/qsqldatabase.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtSql/qsql.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariantList \
+		../M5Lib/include/Network.h \
+		../M5Lib/include/DataBase.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMap \
+		../M5Lib/include/Ipc.h \
+		../M5Lib/include/Utility.h \
 		obj/ui_header/ui_StageChart.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/StageChart.o StageChart.cpp
 

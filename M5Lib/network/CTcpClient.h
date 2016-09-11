@@ -11,7 +11,7 @@ class CTcpClient : public QObject
 public:
     explicit CTcpClient(QObject *parent = 0);
     QTcpSocket *m_socket;
-    int connectHost(QString sIp,QString sPort,QByteArray arrInput,QByteArray &arrOutput,int iWaitTimer=1000);
+    int connectHost(QString sIp,QString sPort,QByteArray arrInput,QByteArray &arrOutput,int iWaitTimer=300);
 
 signals:
     void signalLog(QString st);
