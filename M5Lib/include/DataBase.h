@@ -3,6 +3,9 @@
 
 #include <QObject>
 #include <QSqlDatabase>
+#include <QMap>
+#include <QVariantList>
+#include <QVariant>
 
 namespace _db
 {

@@ -32,7 +32,9 @@ INCLUDEPATH+= \
 HEADERS += \
     $$PWD/M5Library.h \
     $$PWD/Network.h \
-    $$PWD/DataBase.h
+    $$PWD/DataBase.h \
+    $$PWD/Ipc.h \
+    $$PWD/Utility.h
 
-SOURCES += \
+
 

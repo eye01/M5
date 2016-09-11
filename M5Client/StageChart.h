@@ -41,7 +41,7 @@ public:
 
 private:
     Ui::StageChart *ui;
-    void timerEvent(QTimerEvent *event);
+    void timerEvent(QTimerEvent *);
     int m_iMsec;
 public slots:
     void slotTopMenu(MENU_SELECT menu);

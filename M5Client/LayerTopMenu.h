@@ -26,10 +26,10 @@ private slots:
 
     void on_cbKind_activated(int index);
 
-    void on_txtId_textChanged(const QString &arg1);
+    void on_txtId_textChanged(const QString &);
 
-    void on_cbTaifexType_activated(int index);
-    void btnKClicked(bool bChicked);
+    void on_cbTaifexType_activated(int);
+    void btnKClicked(bool);
 private:
     Ui::LayerTopMenu *ui;
     QPropertyAnimation m_ani;

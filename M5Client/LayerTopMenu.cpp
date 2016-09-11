@@ -162,7 +162,7 @@ void LayerTopMenu::on_cbKind_activated(int index)
 
 }
 
-void LayerTopMenu::on_txtId_textChanged(const QString &arg1)
+void LayerTopMenu::on_txtId_textChanged(const QString &)
 {
     if(ui->stackSelectItem->isHidden())
     {
@@ -175,14 +175,14 @@ void LayerTopMenu::on_txtId_textChanged(const QString &arg1)
 
 
 
-void LayerTopMenu::on_cbTaifexType_activated(int index)
+void LayerTopMenu::on_cbTaifexType_activated(int )
 {
     reKLineSelect();
     ui->stackSelectItem->setHidden(false);
     aniUiItem();
 }
 
-void LayerTopMenu::btnKClicked(bool bChicked)
+void LayerTopMenu::btnKClicked(bool )
 {
     MENU_SELECT menu;
     reKLineSelect();

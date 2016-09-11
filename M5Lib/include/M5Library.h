@@ -6,10 +6,9 @@
 #include <QVariantList>
 #include "Network.h"
 #include "DataBase.h"
-
+#include "Ipc.h"
+#include "Utility.h"
 #define M5Lib M5Library::Instance
-
-
 
 
 using namespace _db;
@@ -24,6 +23,10 @@ public:
     Network *network();
 
     DataBase *database();
+
+    Ipc *ipc();
+
+    Utility utility;
 
     /**
      * @brief Instance singleton design pattern
@@ -44,6 +47,8 @@ private:
     Network *m_network;
 
     DataBase *m_database;
+
+    Ipc *m_ipc;
 
 signals:
     void signalLog(QString st);

@@ -1,40 +1,36 @@
-﻿#ifndef NETWORK_H
-#define NETWORK_H
+#ifndef IPC_H
+#define IPC_H
 
 #include <QObject>
 #include <QStringList>
 
 
-
-
-class Network :public QObject
+class Ipc : public QObject
 {
     Q_OBJECT
 public:
-    Network(QObject *parent = 0);
+    explicit Ipc(QObject *parent = 0);
 
-    ~Network();
+    ~Ipc();
 
     /** tcpip server
      * @brief startServer
      * @param sPort
      */
-    void runTcpServer(QString sPort);
+    void runServer(QString sName);
 
     void recallClient(QByteArray arrReturn);
 
 
-    /** block tcpip client
+    /** block local client
      * @brief connectHost
-     * @param sIp
-     * @param sPort
+     * @param sServerName
      * @param arrInput
      * @param arrOutput
      * @param iWaitTimer
      * @return
      */
-    int connectHost(QString sIp, QString sPort, QByteArray arrInput, QByteArray &arrOutput, int iWaitTimer=300);
-
+    int connectHost(QString sServerName,QByteArray arrInput, QByteArray &arrOutput, int iWaitTimer=10000);
 
 
 
@@ -42,13 +38,12 @@ public:
 signals:
     void signalLog(QString st);
 
-    /** tcpip server
+    /** server
      * @brief signalReadAll
      * @param arrRead
      */
     void signalReadAll(QByteArray arrRead);
-
-
+public slots:
 };
 
-#endif // NETWORK_H
+#endif // IPC_H

@@ -31,7 +31,7 @@ StageChart::~StageChart()
     delete ui;
 }
 
-void StageChart::timerEvent(QTimerEvent *event)
+void StageChart::timerEvent(QTimerEvent *)
 {
     if(m_cCtrl.iKLine==-1)
         return;

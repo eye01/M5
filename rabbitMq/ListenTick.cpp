@@ -3,9 +3,10 @@
 #include "utils.h"
 #include "utils.c"
 
-ListenTick::ListenTick(QObject *parent) : QThread(parent),m_bIsOpen(false),m_bIsRun(false)
+ListenTick::ListenTick(QObject *parent) : QThread(parent),m_bIsRun(false)
 {
     m_socket=NULL;
+    m_bIsOpen=false;
 }
 
 ListenTick::~ListenTick()
@@ -86,7 +87,7 @@ int ListenTick::setBindingKey(QString sType, QStringList argv, int iLoopMSec)
 //        }
           QString tmp=QString(argv.at(0)).split(".").at(0)+".*";
           char const *tmp2=tmp.toStdString().c_str();
-          char const *tmp3=QString(argv.at(0)).toStdString().c_str();
+         // char const *tmp3=QString(argv.at(0)).toStdString().c_str();
 
          char const *bindingkey =tmp2;
         amqp_queue_bind(m_conn, 1, m_queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(bindingkey),
@@ -136,7 +137,7 @@ int ListenTick::resetBindingKey(QString sType, QStringList argv, int iLoopMSec)
     //        }
               QString tmp=QString(argv.at(0)).split(".").at(0)+".*";
               char const *tmp2=tmp.toStdString().c_str();
-              char const *tmp3=QString(argv.at(0)).toStdString().c_str();
+             // char const *tmp3=QString(argv.at(0)).toStdString().c_str();
 
              char const *bindingkey =tmp2;
              amqp_queue_unbind(m_conn, 1, m_queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(m_currentBindingKey),
