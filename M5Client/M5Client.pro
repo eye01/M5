@@ -14,26 +14,6 @@ TEMPLATE = app
 
 include($$PWD/../M5Lib/include/M5Lib.pri)
 include($$PWD/../rabbitMq/include/rabbitMq.pri)
-win32{
-OS=windows
-TARGET = M5ClientWin
-}
-unix:!macx{
-OS=linux
-TARGET = M5ClientLinux
-}
-mac:!macx{
-OS=ios
-TARGET = M5ClientIos
-}
-macx{
-OS=osx
-TARGET = M5ClientMac
-}
-android{
-OS=android
-TARGET = M5ClientAndroid
-}
 
 
 DESTDIR = $$PWD/../bin/
@@ -78,16 +58,13 @@ FORMS    += widget.ui \
     LayerBarDiagram.ui \
     LayerTopMenu.ui
 
-unix:!macx: LIBS += -L$$PWD/../M5Lib/ -lM5Lib
 
+
+LIBS += -L$$PWD/../M5Lib/ -lM5Lib$${OS}
 INCLUDEPATH += $$PWD/../M5Lib/include
 DEPENDPATH += $$PWD/../M5Lib/include
 
-
-
-
-
-unix:!macx: PRE_TARGETDEPS += $$PWD/../M5Lib/libM5Lib.a
+PRE_TARGETDEPS += $$PWD/../M5Lib/libM5Lib$${OS}.a
 
 unix:!macx: LIBS += -L$$PWD/../KDChart-2.6.0/lib/ -ltesttools
 
@@ -101,6 +78,8 @@ DEPENDPATH += $$PWD/../KDChart-2.6.0/include/KDChart
 
 INCLUDEPATH += $$PWD/../KDChart-2.6.0/examples/tools
 DEPENDPATH += $$PWD/../KDChart-2.6.0/examples/tools
+
+win32: LIBS += -L$$PWD/../KDChart-2.6.0/lib/win32 -lkdchart2 -ltesttools2
 
 RESOURCES += \
     res.qrc

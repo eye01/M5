@@ -16,7 +16,15 @@ SOURCES += \
     $$PWD/../utils.c \
     $$PWD/../TestTick.cpp
 
-LIBS += -lrabbitmq
+win32: INCLUDEPATH += $$PWD/../../rabbitmq-c/include
+win32: LIBS += -L$$PWD/../../rabbitmq-c/bin -lrabbitmq.4
 
+
+unix:!macx{
+LIBS += -lrabbitmq
+}
+#linux-arm-gnueabi {
+#    //ARM stuff here
+#}
 #linux       sudo apt-get install librabbitmq-dev
 
