@@ -258,8 +258,8 @@ void StageChart::slotTick(QString sTick)
 void StageChart::slotTickStock(QString sTick)
 {
 
-//    if(m_cCtrl.sKind!="stock")
-//        return;
+    if(m_cCtrl.sKind!="stock")
+        return;
 
     QStringList listTick=sTick.split(" ");
     qDebug()<<sTick;
@@ -288,8 +288,8 @@ void StageChart::slotTickStock(QString sTick)
 
 void StageChart::slotTickFaitex(QString sTick)
 {
-//    if(m_cCtrl.sKind!="taifex")
-//        return;
+    if(m_cCtrl.sKind!="taifex")
+        return;
 
     QStringList listTick=sTick.split(" ");
     qDebug()<<sTick;
