@@ -216,7 +216,7 @@ public:
 
         retranslateUi(LayerTopMenu);
 
-        stackSelectType->setCurrentIndex(0);
+        stackSelectType->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(LayerTopMenu);

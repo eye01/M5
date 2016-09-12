@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_StageChart_t {
-    QByteArrayData data[7];
-    char stringdata0[56];
+    QByteArrayData data[10];
+    char stringdata0[91];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,11 +35,15 @@ QT_MOC_LITERAL(2, 23, 0), // ""
 QT_MOC_LITERAL(3, 24, 11), // "MENU_SELECT"
 QT_MOC_LITERAL(4, 36, 4), // "menu"
 QT_MOC_LITERAL(5, 41, 8), // "slotTick"
-QT_MOC_LITERAL(6, 50, 5) // "bTick"
+QT_MOC_LITERAL(6, 50, 5), // "bTick"
+QT_MOC_LITERAL(7, 56, 5), // "sTick"
+QT_MOC_LITERAL(8, 62, 13), // "slotTickStock"
+QT_MOC_LITERAL(9, 76, 14) // "slotTickFaitex"
 
     },
     "StageChart\0slotTopMenu\0\0MENU_SELECT\0"
-    "menu\0slotTick\0bTick"
+    "menu\0slotTick\0bTick\0sTick\0slotTickStock\0"
+    "slotTickFaitex"
 };
 #undef QT_MOC_LITERAL
 
@@ -49,7 +53,7 @@ static const uint qt_meta_data_StageChart[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -57,12 +61,18 @@ static const uint qt_meta_data_StageChart[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x0a /* Public */,
-       5,    1,   27,    2, 0x0a /* Public */,
+       1,    1,   39,    2, 0x0a /* Public */,
+       5,    1,   42,    2, 0x0a /* Public */,
+       5,    1,   45,    2, 0x0a /* Public */,
+       8,    1,   48,    2, 0x0a /* Public */,
+       9,    1,   51,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, QMetaType::QByteArray,    6,
+    QMetaType::Void, QMetaType::QString,    7,
+    QMetaType::Void, QMetaType::QString,    7,
+    QMetaType::Void, QMetaType::QString,    7,
 
        0        // eod
 };
@@ -75,6 +85,9 @@ void StageChart::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->slotTopMenu((*reinterpret_cast< MENU_SELECT(*)>(_a[1]))); break;
         case 1: _t->slotTick((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
+        case 2: _t->slotTick((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 3: _t->slotTickStock((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 4: _t->slotTickFaitex((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -105,13 +118,13 @@ int StageChart::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 5)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 5;
     }
     return _id;
 }

@@ -160,6 +160,8 @@ void LayerTopMenu::on_cbKind_activated(int index)
 
     aniUiType();
 
+    qDebug()<<"select Kind";
+
 }
 
 void LayerTopMenu::on_txtId_textChanged(const QString &)
@@ -171,6 +173,8 @@ void LayerTopMenu::on_txtId_textChanged(const QString &)
         aniUiItem();
 
     }
+
+    qDebug()<<"id select ";
 }
 
 
@@ -179,7 +183,9 @@ void LayerTopMenu::on_cbTaifexType_activated(int )
 {
     reKLineSelect();
     ui->stackSelectItem->setHidden(false);
-    aniUiItem();
+
+
+    qDebug()<<"taifex  type select";
 }
 
 void LayerTopMenu::btnKClicked(bool )
@@ -219,14 +225,19 @@ void LayerTopMenu::btnKClicked(bool )
     else
     {
         if(ui->cbTaifexType->currentIndex()==0)
+        {
             sType="tfe";
+
+            sId="TX";
+
+            if(ui->cbTaifexId->currentIndex()==1)
+                    sId="MX";
+
+        }
         else if(ui->cbTaifexType->currentIndex()==1)
             sType="opt";
 
-        sId="TXMI6";
 
-        if(ui->cbTaifexId->currentIndex()==1)
-                sId="MXFI6";
 
 
     }
@@ -255,5 +266,10 @@ void LayerTopMenu::btnKClicked(bool )
     menu.sId=sId;
 
     emit signalSelect(menu);
+
+}
+
+void LayerTopMenu::on_cbTaifexId_activated(int index)
+{
 
 }

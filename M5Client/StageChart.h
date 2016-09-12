@@ -29,12 +29,16 @@ public:
     TestTick *m_listen;
 #else
     ListenTick *m_listen;
+    ListenTick *m_listen2;
+    ListenTick *m_listen3;
 #endif
 
 
     void startMq(MQ_TYPE type, QStringList argv, int iMsec);
 
     void startMq2(MQ_TYPE type, QStringList argv, int iMsec);
+
+    void startMq3();
 
     void stopMq();
 
@@ -49,9 +53,17 @@ private:
     void timerEvent(QTimerEvent *);
     int m_iMsec;
     QProcess *m_process;
+    QProcess *m_process2;
+    qint64 m_iPid;
 public slots:
     void slotTopMenu(MENU_SELECT menu);
     void slotTick(QByteArray bTick);
+    void slotTick(QString sTick);
+
+    void slotTickStock(QString sTick);
+
+    void slotTickFaitex(QString sTick);
+
 };
 
 #endif // STAGECHART_H

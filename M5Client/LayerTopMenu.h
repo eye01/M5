@@ -30,6 +30,8 @@ private slots:
 
     void on_cbTaifexType_activated(int);
     void btnKClicked(bool);
+    void on_cbTaifexId_activated(int index);
+
 private:
     Ui::LayerTopMenu *ui;
     QPropertyAnimation m_ani;

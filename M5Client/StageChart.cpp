@@ -6,9 +6,10 @@ StageChart::StageChart(QWidget *parent) :
     ui(new Ui::StageChart)
 {
     ui->setupUi(this);
-
+    m_iPid=0;
     iTest=-1;
     m_process=new QProcess(this);
+    m_process2=new QProcess(this);
     m_cCtrl.iKLine=-1;
     m_kData=new CKLineData(this);
 
@@ -17,11 +18,11 @@ StageChart::StageChart(QWidget *parent) :
     m_data.m_modelBarDiagram=&ui->layerBar->m_cModel;
 
     QObject::startTimer(1000);
-
+    M5Lib().ipc()->runServer("M5");
     ui->wTopMenu->connect(ui->wTopMenu,SIGNAL(signalSelect(MENU_SELECT)),this,SLOT(slotTopMenu(MENU_SELECT)));
     //m_data.startMq(_stock,QStringList()<<"tse.*"<<"otc.*"<<"emg.*");
 
-    //  startMq(_stock,QStringList()<<"tse.1477",100);
+    // startMq3();
 }
 
 StageChart::~StageChart()
@@ -70,9 +71,9 @@ void StageChart::slotTopMenu(MENU_SELECT menu)
 
     QString sArg="%1.%2";
 
-    // stopMq();
-    startMq2(type,QStringList()<<sArg.arg(menu.sType).arg(QString(menu.sId)),500);
-
+    //stopMq();
+   //  startMq(type,QStringList()<<sArg.arg(menu.sType).arg(QString(menu.sId)),500);
+    startMq3();
 }
 
 
@@ -93,20 +94,22 @@ void StageChart::startMq(MQ_TYPE type, QStringList argv, int iMsec)
         m_listen=new TestTick(this);
 #else
         m_listen=new ListenTick(this);
+        m_listen2=new ListenTick(this);
+
 #endif
 
 
 
         m_listen->connect(m_listen,SIGNAL(signalTick(QString)),this,SLOT(slotTick(QString)));
-
-        m_listen->setBindingKey(sType,argv,iMsec);
-
+        m_listen2->connect(m_listen2,SIGNAL(signalTick(QString)),this,SLOT(slotTick(QString)));
+        m_listen->setBindingKey("stock",QStringList()<<"tse.*"<<"otc.*"<<"emg.*",iMsec);
+        m_listen2->setBindingKey("taifex",QStringList()<<"#",iMsec);
         m_listen->start();
+        m_listen2->start();
         iTest=0;
 
 
     }
-
 
 }
 
@@ -147,11 +150,11 @@ void StageChart::startMq2(MQ_TYPE type, QStringList argv, int iMsec)
     sName.append(argv[3]);
     sName.append(QTime::currentTime().addMSecs(13).toString("zz"));
 
-    argv.push_back(sName);
+    //argv.push_back(sName);
 
     qDebug()<<"sName: "<<sName;
     //  m_process=new QProcess(this);
-    M5Lib().ipc()->runServer(sName);
+
 
     connect(M5Lib().ipc(),SIGNAL(signalReadAll(QByteArray)),this,SLOT(slotTick(QByteArray)));
 
@@ -159,30 +162,74 @@ void StageChart::startMq2(MQ_TYPE type, QStringList argv, int iMsec)
     listArguments<<"192.168.0.113"<<"123"<<"stock"<<"tse.*";
     qDebug()<<argv;
 
-//    if(m_process==NULL)
-//    {
-//        m_process->close();
-//        m_process->kill();
+    //    if(m_process==NULL)
+    //    {
+    //        m_process->close();
+    //        m_process->kill();
 
-//        m_process;
-//        m_process=new QProcess(this);
+    //        m_process;
+    //        m_process=new QProcess(this);
 
-//    }
-//    //m_process->kill();
+    //    }
+    //    if(m_iPid!=0)
+
+    QString st="kill %1";
+
+    if(m_iPid!=0)
+        m_process2->start("pkill TickListenLinux");
+
+    QThread::msleep(500);
+
     m_process->start("./TickListenLinux",argv);
-//    qDebug()<<m_process->pid();
+
+    m_iPid= m_process->pid();
+    qDebug()<<"m1: "<<m_process->processId();
+    //    qDebug()<<m_process->pid();
     // m_process->deleteLater();
 
-//    QProcess pro;
-//    pro.start("./TickListenLinux",argv);
+    //    QProcess pro;
+    //    pro.start("./TickListenLinux",argv);
 
 }
+
+void StageChart::startMq3()
+{
+
+    if(m_listen==NULL)
+    {
+#if TEST_TICK
+        qDebug()<<"Test Tick";
+        m_listen=new TestTick(this);
+#else
+        m_listen=new ListenTick(this);
+        m_listen2=new ListenTick(this);
+
+#endif
+
+
+
+        m_listen->connect(m_listen,SIGNAL(signalTick(QString)),this,SLOT(slotTickStock(QString)));
+        m_listen2->connect(m_listen2,SIGNAL(signalTick(QString)),this,SLOT(slotTickFaitex(QString)));
+        m_listen->setBindingKey("stock",QStringList()<<"tse.*"<<"otc.*"<<"emg.*",300);
+        m_listen2->setBindingKey("taifex",QStringList()<<"#",300);
+        m_listen->start();
+        m_listen2->start();
+    }
+}
+
+
 
 void StageChart::slotTick(QByteArray bTick)
 {
     qDebug()<<"get tick; "<<bTick;
     QString sTick;
     sTick.append(bTick);
+    slotTick(sTick);
+
+}
+
+void StageChart::slotTick(QString sTick)
+{
     QStringList listTick=sTick.split(" ");
     qDebug()<<sTick;
     if(listTick.length()<5 || listTick.at(4)=="0")
@@ -206,9 +253,69 @@ void StageChart::slotTick(QByteArray bTick)
             m_data.appendData(m_kData->init());
         }
     }
+}
 
+void StageChart::slotTickStock(QString sTick)
+{
 
+//    if(m_cCtrl.sKind!="stock")
+//        return;
 
+    QStringList listTick=sTick.split(" ");
+    qDebug()<<sTick;
+    if(listTick.length()<5 || listTick.at(4)=="0")
+        return;
+
+    if(m_cCtrl.sId=="*" || m_cCtrl.sId==listTick.at(0) )
+    {
+        m_kData->setCost(listTick.at(3));
+        m_kData->setNums(listTick.at(4));
+        m_kData->setTime(listTick.at(1));
+        m_data.reflash(m_kData);
+
+        ui->lbId->setText(listTick.at(0));
+        ui->lbOpen->setText(QString::number(m_kData->m_iOpen));
+        ui->lbMax->setText(QString::number(m_kData->m_iMax));
+        ui->lbMin->setText(QString::number(m_kData->m_iMin));
+        ui->lbClose->setText(QString::number(m_kData->m_iClose));
+
+        if(m_cCtrl.iKLine==1)
+        {
+            m_data.appendData(m_kData->init());
+        }
+    }
+}
+
+void StageChart::slotTickFaitex(QString sTick)
+{
+//    if(m_cCtrl.sKind!="taifex")
+//        return;
+
+    QStringList listTick=sTick.split(" ");
+    qDebug()<<sTick;
+    if(listTick.length()<5 || listTick.at(4)=="0")
+        return;
+
+    QString st=QString(listTick.at(0)).left(2);
+
+    if(m_cCtrl.sId=="*" || (m_cCtrl.sId==st) )
+    {
+        m_kData->setCost(listTick.at(3));
+        m_kData->setNums(listTick.at(4));
+        m_kData->setTime(listTick.at(1));
+        m_data.reflash(m_kData);
+
+        ui->lbId->setText(listTick.at(0));
+        ui->lbOpen->setText(QString::number(m_kData->m_iOpen));
+        ui->lbMax->setText(QString::number(m_kData->m_iMax));
+        ui->lbMin->setText(QString::number(m_kData->m_iMin));
+        ui->lbClose->setText(QString::number(m_kData->m_iClose));
+
+        if(m_cCtrl.iKLine==1)
+        {
+            m_data.appendData(m_kData->init());
+        }
+    }
 }
 
 

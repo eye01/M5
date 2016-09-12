@@ -78,18 +78,12 @@ int ListenTick::setBindingKey(QString sType, QStringList argv, int iLoopMSec)
 
     {
 
-//        for (int i = 0; i < argv.length(); i++)
-//        {
-//            const char  *bindingkey = QString(argv.at(i)).toStdString().c_str();
-//            amqp_queue_bind(m_conn, 1, m_queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(bindingkey),
-//                            amqp_empty_table);
-//            die_on_amqp_error(amqp_get_rpc_reply(m_conn), "Binding queue");
-//        }
           QString tmp=QString(argv.at(0)).split(".").at(0)+".*";
           char const *tmp2=tmp.toStdString().c_str();
          // char const *tmp3=QString(argv.at(0)).toStdString().c_str();
 
          char const *bindingkey =tmp2;
+
         amqp_queue_bind(m_conn, 1, m_queuename, amqp_cstring_bytes(exchange), amqp_cstring_bytes(bindingkey),
                         amqp_empty_table);
 
@@ -98,7 +92,7 @@ int ListenTick::setBindingKey(QString sType, QStringList argv, int iLoopMSec)
 
     }
 
-     this->msleep(1000);
+
     amqp_basic_consume(m_conn, 1, m_queuename, amqp_empty_bytes, 0, 1, 0, amqp_empty_table);
 
 

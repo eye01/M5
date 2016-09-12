@@ -74,7 +74,7 @@ protected:
     amqp_bytes_t m_queuename;
 
 
-
+    int i;
     int open();
 
     void loopListen();

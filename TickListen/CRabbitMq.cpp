@@ -109,7 +109,7 @@ int CRabbitMq::init(int argc, char *argv[])
         QByteArray input;
         input.append(st);
         QByteArray output;
-        M5Lib().ipc()->connectHost(sName,input,output,200);
+        M5Lib().ipc()->connectHost("M5",input,output,200);
 
         fflush(stdout);
 
