@@ -30,7 +30,7 @@ private slots:
 
     void on_cbTaifexType_activated(int);
     void btnKClicked(bool);
-    void on_cbTaifexId_activated(int index);
+    void on_cbTaifexId_activated(int);
 
 private:
     Ui::LayerTopMenu *ui;

@@ -235,9 +235,10 @@ void LayerTopMenu::btnKClicked(bool )
 
         }
         else if(ui->cbTaifexType->currentIndex()==1)
+        {
             sType="opt";
-
-
+            sId="*";
+        }
 
 
     }
@@ -269,7 +270,8 @@ void LayerTopMenu::btnKClicked(bool )
 
 }
 
-void LayerTopMenu::on_cbTaifexId_activated(int index)
+void LayerTopMenu::on_cbTaifexId_activated(int)
 {
-
+    ui->stackSelectItem->setHidden(false);
+    aniUiItem();
 }
