@@ -2,7 +2,7 @@
 #define UTILITY_H
 
 #include <QObject>
-
+#include <QStringList>
 struct CData
 {
     QString sAction;

@@ -34,9 +34,9 @@ public:
 #endif
 
 
-    void startMq(MQ_TYPE type, QStringList argv, int iMsec);
+    void startMq(MQ_TYPE type, QStringList, int);
 
-    void startMq2(MQ_TYPE type, QStringList argv, int iMsec);
+    void startMq2(MQ_TYPE type, QStringList argv, int);
 
     void startMq3();
 

@@ -989,6 +989,7 @@ obj/moc_Utility.cpp: ../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		../../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
 		../M5Lib/include/Utility.h \
 		../../../Qt5.7.0/5.7/gcc_64/bin/moc
 	/home/roger/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/roger/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/roger/q_project/M5/M5Client -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/rabbitMq/include -I/home/roger/q_project/M5/rabbitMq/include/include -I/home/roger/q_project/M5 -I/home/roger/q_project/M5/M5Lib/include -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDGantt -I/home/roger/q_project/M5/KDChart-2.6.0/include/KDChart -I/home/roger/q_project/M5/KDChart-2.6.0/examples/tools -I/home/roger/Qt5.7.0/5.7/gcc_64/include -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtTest -I/home/roger/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../M5Lib/include/Utility.h -o obj/moc_Utility.cpp

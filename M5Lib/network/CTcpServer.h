@@ -6,8 +6,6 @@
 #include <QtNetwork>
 
 
-
-
 class CTcpServer : public QThread
 {
     Q_OBJECT
@@ -15,8 +13,6 @@ public:
     explicit CTcpServer(QObject *parent = 0);
     void run();
     void startServer(QString sPort);
-
-
 
 private:
         QTcpServer *m_tcpServer;

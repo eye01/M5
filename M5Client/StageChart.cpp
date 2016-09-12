@@ -61,15 +61,13 @@ void StageChart::slotTopMenu(MENU_SELECT menu)
 
     m_cCtrl=menu;
 
+//    MQ_TYPE type;
+//    type=_taifex;
 
+//    if(menu.sKind=="stock")
+//        type=_stock;
 
-    MQ_TYPE type;
-    type=_taifex;
-
-    if(menu.sKind=="stock")
-        type=_stock;
-
-    QString sArg="%1.%2";
+//    QString sArg="%1.%2";
 
     //stopMq();
    //  startMq(type,QStringList()<<sArg.arg(menu.sType).arg(QString(menu.sId)),500);
@@ -77,7 +75,7 @@ void StageChart::slotTopMenu(MENU_SELECT menu)
 }
 
 
-void StageChart::startMq(MQ_TYPE type, QStringList argv, int iMsec)
+void StageChart::startMq(MQ_TYPE type, QStringList, int iMsec)
 {
 
     m_iMsec=0;
@@ -130,7 +128,7 @@ void StageChart::stopMq()
 
 }
 
-void StageChart::startMq2(MQ_TYPE type, QStringList argv, int iMsec)
+void StageChart::startMq2(MQ_TYPE type, QStringList argv, int)
 {
     QString sType="taifex";
 
@@ -182,8 +180,8 @@ void StageChart::startMq2(MQ_TYPE type, QStringList argv, int iMsec)
 
     m_process->start("./TickListenLinux",argv);
 
-    m_iPid= m_process->pid();
-    qDebug()<<"m1: "<<m_process->processId();
+  //  m_iPid= m_process->pid();
+
     //    qDebug()<<m_process->pid();
     // m_process->deleteLater();
 
