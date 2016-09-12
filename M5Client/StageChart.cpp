@@ -18,7 +18,7 @@ StageChart::StageChart(QWidget *parent) :
     m_data.m_modelBarDiagram=&ui->layerBar->m_cModel;
 
     QObject::startTimer(1000);
-    M5Lib().ipc()->runServer("M5");
+  //  M5Lib().ipc()->runServer("M5");
     ui->wTopMenu->connect(ui->wTopMenu,SIGNAL(signalSelect(MENU_SELECT)),this,SLOT(slotTopMenu(MENU_SELECT)));
     //m_data.startMq(_stock,QStringList()<<"tse.*"<<"otc.*"<<"emg.*");
 
